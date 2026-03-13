@@ -1,1 +1,1 @@
-void multiplie_par_7(int n);
+void multiplie_par_7(int *n);
