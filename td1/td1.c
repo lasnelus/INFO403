@@ -4,8 +4,6 @@
 
 void main(void)
 {
-    int a,b,c;
-    scanf(%d,%d,%d,&a,&b,&c);
 }
 
 
@@ -18,13 +16,13 @@ void compte_char(void)
         c= getchar();
     }
 
-    printf("Le nombre de caractères est : %d\n", res);8
+    printf("Le nombre de caractères est : %d\n", res);
 }
 
 int somme_tab(int tab[], int taille)
 {
     int res = 0;
-    for(int i = 0, i < taille, i++){
+    for(int i = 0; i < taille; i++){
         res = res + tab[i];
     } 
     return res;
@@ -39,7 +37,7 @@ void principale(void)
 {
     int choice;
     do{
-        afficheMenu()
+        afficheMenu();
         scanf("%d", &choice);
         action(choice);
     }while(choice != 3);
@@ -47,7 +45,9 @@ void principale(void)
 
 void afficheMenu(void)
 {
-    prinf();
+    printf("1. message");
+    printf("2. somme");
+    printf("3. quitter");
 }
 
 void action(int choice)
@@ -65,11 +65,13 @@ void action(int choice)
 
 void bienvenue(void)
 {
-    char * nom = demandenom();
-    printf("hello : %s", nom);
+    char user[50];
+    printf("quel est tonn nom?\n");
+    scanf("%s", user);
+    printf("hello : %s", user);
 }
 
-void somme(void)
+void somme_floats(void)
 {
     printf("deux entier stp")
 }
