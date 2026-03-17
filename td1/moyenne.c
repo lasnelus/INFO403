@@ -23,7 +23,7 @@ int min_liste (int tab[], int taille)
 {
     int res = tab[0];
     for(int i = 1; i<taille; i++){
-        if (tab[i]>res){
+        if (tab[i]<res){
             res = tab[i];
         }
     }
@@ -34,7 +34,7 @@ int max_liste (int tab[], int taille)
 {
     int res = tab[0];
     for(int i = 1; i<taille; i++){
-        if (tab[i]<res){
+        if (tab[i]>res){
             res = tab[i];
         }
     }
@@ -47,7 +47,7 @@ int moyenne_sport(int tab[], int taille)
     int max = max_liste(tab, taille);
     int add = addition_liste(tab, taille);
 
-    return (addition_liste-(min + max))/taille; //taille -2 potentiellement
+    return (add-(min + max))/taille; //taille -2 potentiellement
 }
 
 
