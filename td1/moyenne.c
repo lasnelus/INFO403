@@ -41,7 +41,7 @@ int max_liste (int tab[], int taille)
     return res;
 }
 
-int moyennne_sport(int tab[], int taille)
+int moyenne_sport(int tab[], int taille)
 {
     int min = min_liste(tab, taille);
     int max = max_liste(tab, taille);
@@ -55,7 +55,7 @@ void super_UI(int tab[], int taille)
 {
     for(int i = 0; i <taille; i++){
         printf("chiffre n° %d", i+1);
-        scanf("%d", tab[i]);
+        scanf("%d", &tab[i]);
     }
-    printf("%d", moyenne_sport(tab, taille))
+    printf("%d", moyenne_sport(tab, taille));
 }
