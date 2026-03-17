@@ -58,7 +58,7 @@ void action(int choice)
             bienvenue();
             break;
         case 2:
-            somme_floats()
+            somme_floats();
             break;
         }
 }
@@ -71,7 +71,7 @@ void bienvenue(void)
     printf("hello : %s", user);
 }
 
-void somme_floats(void)
+void somme_floats(float a, float b)
 {
-    printf("deux entier stp")
+    printf("tkt");
 }
