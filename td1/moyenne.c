@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "fonction.h"
+#include "moyenne.h"
 
 
 void main(void)
