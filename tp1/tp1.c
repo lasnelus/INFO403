@@ -41,6 +41,7 @@ Joueur init_joueur(int nb)
     Joueur j;
     j.nb_bateau = nb;
     j.grille = init_grille();
+    return j;
 }
 
 
@@ -64,11 +65,18 @@ void affiche_grille(TypeGrille grid)
 
 void add_bateau(TypeGrille *grid, int latitude, int longitude)
 {
+    if (latitude < 0 || latitude >= grid->taille) return;
+    if (longitude < 0 || longitude >= grid->taille) return;
     grid->Grille[latitude][longitude] = 'B';
 }
 
 void tirer (TypeGrille *grid, int latitude, int longitude)
 {
+    if (latitude < 0 || latitude >= grid->taille || longitude < 0 || longitude >= grid->taille) {
+        printf("Coordonnées hors limites\n");
+        return;
+    }
+
     if (check_touche(*grid, latitude, longitude))
     {
         printf("pizza sans ananas\n");
@@ -82,6 +90,8 @@ void tirer (TypeGrille *grid, int latitude, int longitude)
 }
 
 bool check_touche (TypeGrille grid, int latitude, int longitude){
+    if (latitude < 0 || latitude >= grid.taille) return false;
+    if (longitude < 0 || longitude >= grid.taille) return false;
     return grid.Grille[latitude][longitude] == 'B';
 }
 
@@ -91,16 +101,16 @@ void generer_bateaux_aleatoire(TypeGrille *grille, int nb_bateaux)
     int longitude;
     for(int i=0; i<nb_bateaux; i++)
     {
-        latitude = rand()%20;
-        longitude = rand()%20;
+        latitude = rand() % SIZE;
+        longitude = rand() % SIZE;
         add_bateau(grille, latitude, longitude);
     }
 }
 
 void tire_aleatoire(TypeGrille *grille)
 {
-    int latitude = rand()%20;
-    int longitude = rand()%20;
+    int latitude = rand() % SIZE;
+    int longitude = rand() % SIZE;
     tirer(grille, latitude, longitude);
 }
 
