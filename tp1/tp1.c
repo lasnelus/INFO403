@@ -78,13 +78,13 @@ void tirer (Joueur *joueur, int latitude, int longitude)
     if (check_touche(joueur->grille, latitude, longitude))
     {
         printf("pizza sans ananas\n");
-        joueur->grille.Grille = Grille[latitude][longitude] = 'X';
+        joueur->grille->Grille = Grille[latitude][longitude] = 'X';
         joueur->nb_bateau = joueur->nb_bateau-1;
     }
     else
     {
         printf("pizza avec ananas\n");
-        joueur->grille.Grille = Grille[latitude][longitude] = 'O';
+        joueur->grille->Grille = Grille[latitude][longitude] = 'O';
     }
 }
 

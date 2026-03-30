@@ -1,12 +1,12 @@
 #include <stdbool.h>
 #define SIZE 10
 
-typedef struct{
+typedef struct {
     int taille;
     char Grille[SIZE][SIZE];
 } TypeGrille;
 
-typedef struct{
+typedef struct {
     int nb_bateau;
     TypeGrille grille;
 } Joueur;
