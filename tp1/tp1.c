@@ -69,6 +69,6 @@ void tirer_UI(TypeGrille *grille){
     int latitude;
     int longitude;
     printf("Entrez les coordonnées de tir (ligne colonne) :");
-    scanf("%d %d", latitude longitude);
-    tirer(grille, latitude, longitude);
+    scanf("%d", "%d", &latitude, &longitude);
+    tirer(grille, *latitude, *longitude);
 }
