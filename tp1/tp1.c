@@ -7,7 +7,6 @@ int main(void)
 {
     srand(time(NULL));
 
-
     TypeGrille grjoueur = init_grille();
     TypeGrille grbot = init_grille();
 
@@ -42,9 +41,9 @@ void affiche_grille(TypeGrille grid)
     {
         printf("%d ", i);
         for (int j = 0; j < grid.size; j++)
+        {
         printf("%c ", grid.Grille[i][j]);
         }
-        {
         printf("\n");
     }
 }
