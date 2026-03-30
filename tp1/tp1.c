@@ -7,40 +7,54 @@ int main(void)
 {
     srand(time(NULL));
 
-    TypeGrille grjoueur = init_grille();
-    TypeGrille grbot = init_grille();
+    Joueur joueur = init_joueur(3);
+    Joueur bot = init_joueur(3);
 
-    affiche_grille(grjoueur);
-    placage_bateaux_UI(&grjoueur,3);
+    affiche_grille(joueur.grille);
+    placage_bateaux_UI(&joueur.grille,joueur.nb_bateau);
 
-    generer_bateaux_aleatoire(&grbot, 3);
+    generer_bateaux_aleatoire(&bot.grille, bot.nb_bateau);
 
-    tire_aleatoire(&grjoueur);
-    affiche_grille(grjoueur);
-    affiche_grille(grbot);
+    affiche_grille(joueur.grille);
+    affiche_grille(bot.grille);
+
+    tire_aleatoire(&joueur.grille);
+
+    affiche_grille(joueur.grille);
+    affiche_grille(bot.grille);
     return 0;
 }
+
 
 TypeGrille init_grille(void)
 {
     TypeGrille g;
-    g.size = SIZE;
+    g.taille = SIZE;
     for (int i = 0; i < SIZE; i++)
         for (int j = 0; j < SIZE; j++)
             g.Grille[i][j] = '.';
     return g;
 }
 
+Joueur init_joueur(int nb)
+{
+    Joueur j;
+    j.nb_bateau = nb;
+    j.grille = init_grille();
+}
+
+
+
 
 void affiche_grille(TypeGrille grid)
 {
     printf("  ");
-    for (int c = 0; c < grid.size; c++) printf("%d ", c);
+    for (int c = 0; c < grid.taille; c++) printf("%d ", c);
     printf("\n");
-    for (int i = 0; i < grid.size; i++)
+    for (int i = 0; i < grid.taille; i++)
     {
         printf("%d ", i);
-        for (int j = 0; j < grid.size; j++)
+        for (int j = 0; j < grid.taille; j++)
         {
         printf("%c ", grid.Grille[i][j]);
         }

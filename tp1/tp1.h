@@ -2,9 +2,18 @@
 #define SIZE 10
 
 typedef struct{
-    int size;
+    int taille;
     char Grille[SIZE][SIZE];
 } TypeGrille;
+
+typedef struct{
+    int nb_bateau;
+    TypeGrille grille;
+} Joueur;
+
+
+
+Joueur init_joueur(int nb);
 
 TypeGrille init_grille(void);
 
