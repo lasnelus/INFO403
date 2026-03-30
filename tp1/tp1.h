@@ -4,8 +4,10 @@
 
 typedef struct{
     int size;
-    char Grille[size][size];
+    char Grille[NB_LIGNE][NB_COLONNE];
 } TypeGrille;
+
+TypeGrille init_grille(void);
 
 void affiche_Grille(TypeGrille grille);
 

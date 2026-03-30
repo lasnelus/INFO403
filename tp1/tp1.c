@@ -3,33 +3,28 @@
 
 int main(void)
 {
-    TypeGrille gr1 = {
-        {'.','.','.','.','.','.','.','.','.','.'},
-        {'.','.','.','.','.','.','.','.','.','.'},
-        {'.','.','.','.','.','.','.','.','.','.'},
-        {'.','.','.','.','.','.','.','.','.','.'},
-        {'.','.','.','.','.','.','.','.','.','.'},
-        {'.','.','.','.','.','.','.','.','.','.'},
-        {'.','.','.','.','.','.','.','.','.','.'},
-        {'.','.','.','.','.','.','.','.','.','.'},
-        {'.','.','.','.','.','.','.','.','.','.'},
-        {'.','.','.','.','.','.','.','.','.','.'}
-    };
+    TypeGrille gr1 = init_grille();
 
     affiche_Grille(gr1);
+    add_boat(&gr1, 5, 5);
+    printf("\nAprès ajout bateau:\n");
+    affiche_Grille(gr1);
     tirer(&gr1, 5, 5);
+    tirer(&gr1, 0, 0);
     return 0;
 }
 
 void affiche_Grille(TypeGrille grid)
 {
-    printf("   0 1 2 3 4 5 6 7 8 9\n");
-    for(int i=0; i<grid.size;i++)
+    printf("   ");
+    for (int c = 0; c < grid.size; c++) printf("%d ", c);
+    printf("\n");
+    for (int i = 0; i < grid.size; i++)
     {
-        printf("%d ",i);
-        for(int j=0;j<frid.size;j++)
+        printf("%d ", i);
+        for (int j = 0; j < grid.size; j++)
         {
-            printf(" %c", grid[i][j]);
+            printf("%c ", grid.Grille[i][j]);
         }
         printf("\n");
     }
@@ -37,19 +32,35 @@ void affiche_Grille(TypeGrille grid)
 
 void add_boat(TypeGrille *grid, int latitude, int longitude)
 {
-    *grid[latitude][longitude]->'B';
+    grid->Grille[latitude][longitude] = 'B';
 }
 
 void tirer (TypeGrille *grid, int latitude, int longitude)
 {
     if (check_Touche(*grid, latitude, longitude))
     {
-        printf("pizza sans ananas");
-    }else{
-        printf("pizza avec ananas");
+        printf("pizza sans ananas\n");
+        grid->Grille[latitude][longitude] = 'X';
+    }
+    else
+    {
+        printf("pizza avec ananas\n");
+        grid->Grille[latitude][longitude] = 'O';
     }
 }
 
 bool check_Touche (TypeGrille grid, int latitude, int longitude){
-    grid[latitude][longitude] = 'B';
+    if (latitude < 0 || latitude >= grid.size) return false;
+    if (longitude < 0 || longitude >= NB_COLONNE) return false;
+    return grid.Grille[latitude][longitude] == 'B';
+}
+
+TypeGrille init_grille(void)
+{
+    TypeGrille g;
+    g.size = NB_LIGNE;
+    for (int i = 0; i < g.size; i++)
+        for (int j = 0; j < NB_COLONNE; j++)
+            g.Grille[i][j] = '.';
+    return g;
 }
