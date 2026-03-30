@@ -11,14 +11,14 @@ int main(void)
     TypeGrille grjoueur = init_grille();
     TypeGrille grbot = init_grille();
 
-    affiche_Grille(grjoueur);
-    add_boat(&grjoueur, 5, 5);
+    affiche_grille(grjoueur);
+    add_bateau(&grjoueur, 5, 5);
 
     generate_random_bateaux(&grbot, 3);
 
-    
-    affiche_Grille(grjoueur);
-    affiche_Grille(grbot);
+
+    affiche_grille(grjoueur);
+    affiche_grille(grbot);
     return 0;
 }
 
@@ -56,7 +56,7 @@ void add_bateau(TypeGrille *grid, int latitude, int longitude)
 
 void tirer (TypeGrille *grid, int latitude, int longitude)
 {
-    if (check_Touche(*grid, latitude, longitude))
+    if (check_touche(*grid, latitude, longitude))
     {
         printf("pizza sans ananas\n");
         grid->Grille[latitude][longitude] = 'X';
@@ -80,7 +80,7 @@ void generate_random_bateaux(TypeGrille *grille, int nb_bateaux)
     {
         latitude = rand();
         longitude = rand();
-        add_bateau(grille, latitude, longitude)
+        add_bateau(grille, latitude, longitude);
     }
 }
 
