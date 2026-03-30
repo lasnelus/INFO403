@@ -22,8 +22,6 @@ int main(void)
         printf("\n--- Etat des grilles ---\n");
         printf("Joueur (vos bateaux) :\n");
         affiche_grille(joueur.grille);
-        printf("Bot :\n");
-        affiche_grille(bot.grille);
 
         if (tour == 0)
         {
@@ -39,6 +37,11 @@ int main(void)
 
     if (joueur.nb_bateau <= 0) printf("Le bot a gagné !\n");
     else printf("Vous avez gagné !\n");
+    printf("\n--- Etat des grilles ---\n");
+    printf("Joueur (vos bateaux) :\n");
+    affiche_grille(joueur.grille);
+    printf("Bot :\n");
+    affiche_grille(bot.grille);
 
     return 0;
 }
@@ -93,24 +96,26 @@ void tirer (Joueur *joueur, int latitude, int longitude, int *tour)
     if (latitude < 0 || latitude >= joueur->grille.taille || longitude < 0 || longitude >= joueur->grille.taille) {
         printf("Coordonnées hors limites\n");
         return;
-    }
-
-    if (check_touche(joueur->grille, latitude, longitude))
+    }else
     {
-        printf("pizza sans ananas\n");
-        joueur->grille.Grille[latitude][longitude] = 'X';
-        if (joueur->nb_bateau > 0) joueur->nb_bateau--;
-    }
-    else
-    {
-        printf("pizza avec ananas\n");
-        joueur->grille.Grille[latitude][longitude] = 'O';
-        if (*tour == 1)
+        printf("tire en %d %d", latitude, longitude);
+        if (check_touche(joueur->grille, latitude, longitude))
         {
-            *tour = 0;
-        }else
+            printf("navir touché\n");
+            joueur->grille.Grille[latitude][longitude] = 'X';
+            if (joueur->nb_bateau > 0) joueur->nb_bateau--;
+        }
+        else
         {
-            *tour = 1;
+            printf("plouf\n");
+            joueur->grille.Grille[latitude][longitude] = 'O';
+            if (*tour == 1)
+            {
+                *tour = 0;
+            }else
+            {
+                *tour = 1;
+            }
         }
     }
 }
