@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include "tp1.h"
-#define RAND_MAX 10
 
 int main(void)
 {
@@ -79,8 +78,8 @@ void generate_random_bateaux(TypeGrille *grille, int nb_bateaux)
     int longitude;
     for(int i=0; i<nb_bateaux; i++)
     {
-        latitude = rand();
-        longitude = rand();
+        latitude = (rand()/RAND_MAX) * 10;
+        longitude = (rand()/RAND_MAX) * 1;
         add_bateau(grille, latitude, longitude);
     }
 }
