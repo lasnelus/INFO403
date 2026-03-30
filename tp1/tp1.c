@@ -78,8 +78,8 @@ void generate_random_bateaux(TypeGrille *grille, int nb_bateaux)
     int longitude;
     for(int i=0; i<nb_bateaux; i++)
     {
-        latitude = (rand()/RAND_MAX) * 10;
-        longitude = (rand()/RAND_MAX) * 1;
+        latitude = (int)((double)rand()/RAND_MAX) * 10;
+        longitude = (int)((double)rand()/RAND_MAX) * 1;
         printf("generating at %d, %d",latitude ,longitude);
         add_bateau(grille, latitude, longitude);
     }
