@@ -3,4 +3,4 @@
 
 typedef int Grille[NB_LIGNE][NB_COLONNE];
 
-void affiche_Grille(Grille grid);
+void affiche_Grille(void);
