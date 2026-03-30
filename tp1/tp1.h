@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #define NB_COLONNE 10
 #define NB_LIGNE 10
 
