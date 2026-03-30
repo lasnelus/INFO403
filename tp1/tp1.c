@@ -1,22 +1,39 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 #include "tp1.h"
 
 int main(void)
 {
+    srand(time(NULL));
+
+
     TypeGrille grjoueur = init_grille();
     TypeGrille grbot = init_grille();
 
     affiche_Grille(grjoueur);
     add_boat(&grjoueur, 5, 5);
 
-    affiche_Grille(grjoueur);
-    tirer_UI(&grbot);
+    generate_random_bateaux(&grbot, 3);
 
+    
+    affiche_Grille(grjoueur);
     affiche_Grille(grbot);
     return 0;
 }
 
-void affiche_Grille(TypeGrille grid)
+TypeGrille init_grille(void)
+{
+    TypeGrille g;
+    g.size = NB_LIGNE;
+    for (int i = 0; i < g.size; i++)
+        for (int j = 0; j < NB_COLONNE; j++)
+            g.Grille[i][j] = '.';
+    return g;
+}
+
+
+void affiche_grille(TypeGrille grid)
 {
     printf("  ");
     for (int c = 0; c < grid.size; c++) printf("%d ", c);
@@ -32,7 +49,7 @@ void affiche_Grille(TypeGrille grid)
     }
 }
 
-void add_boat(TypeGrille *grid, int latitude, int longitude)
+void add_bateau(TypeGrille *grid, int latitude, int longitude)
 {
     grid->Grille[latitude][longitude] = 'B';
 }
@@ -51,19 +68,23 @@ void tirer (TypeGrille *grid, int latitude, int longitude)
     }
 }
 
-bool check_Touche (TypeGrille grid, int latitude, int longitude){
+bool check_touche (TypeGrille grid, int latitude, int longitude){
     return grid.Grille[latitude][longitude] == 'B';
 }
 
-TypeGrille init_grille(void)
+void generate_random_bateaux(TypeGrille *grille, int nb_bateaux)
 {
-    TypeGrille g;
-    g.size = NB_LIGNE;
-    for (int i = 0; i < g.size; i++)
-        for (int j = 0; j < NB_COLONNE; j++)
-            g.Grille[i][j] = '.';
-    return g;
+    int latitude;
+    int longitude;
+    for(int i=0; i<nb_bateaux; i++)
+    {
+        latitude = rand();
+        longitude = rand();
+        add_bateau(grille, latitude, longitude)
+    }
 }
+
+
 
 void tirer_UI(TypeGrille *grille){
     int latitude;
