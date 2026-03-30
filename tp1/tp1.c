@@ -17,7 +17,6 @@ int main(void)
     };
 
     affiche_Grille(gr1);
-    printf("???");
     tirer(&gr1, 5, 5);
     return 0;
 }
@@ -36,10 +35,10 @@ void affiche_Grille(Grille grid)
     }
 }
 
-// void add_boat(Grille *grid, int latitude, int longitude)
-// {
-//     grid[latitude][longitude] = "B";
-// }
+void add_boat(Grille *grid, int latitude, int longitude)
+{
+    *grid[latitude][longitude]->'B';
+}
 
 void tirer (Grille *grid, int latitude, int longitude)
 {
