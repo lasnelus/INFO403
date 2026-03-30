@@ -17,7 +17,9 @@ void tirer (TypeGrille *grille, int latitude, int longitude);
 
 bool check_touche (TypeGrille grille, int latitude, int longitude);
 
-void generate_random_bateaux(TypeGrille *grille, int nb_bateaux);
+void generer_bateaux_aleatoire(TypeGrille *grille, int nb_bateaux);
 
 
 void tirer_UI(TypeGrille *grille);
+
+void placage_bateaux_UI(TypeGrille *grille, int nb_bateaux);

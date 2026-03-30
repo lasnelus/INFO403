@@ -14,7 +14,7 @@ int main(void)
     affiche_grille(grjoueur);
     add_bateau(&grjoueur, 5, 5);
 
-    generate_random_bateaux(&grbot, 3);
+    generer_bateaux_aleatoire(&grbot, 3);
 
 
     affiche_grille(grjoueur);
@@ -72,7 +72,7 @@ bool check_touche (TypeGrille grid, int latitude, int longitude){
     return grid.Grille[latitude][longitude] == 'B';
 }
 
-void generate_random_bateaux(TypeGrille *grille, int nb_bateaux)
+void generer_bateaux_aleatoire(TypeGrille *grille, int nb_bateaux)
 {
     int latitude;
     int longitude;
@@ -91,6 +91,18 @@ void tirer_UI(TypeGrille *grille){
     int latitude;
     int longitude;
     printf("Entrez les coordonnées de tir (ligne colonne) :");
-    scanf("%d, %d", &latitude, &longitude);
+    scanf("%d %d", &latitude, &longitude);
     tirer(grille, latitude, longitude);
+}
+
+void placage_bateaux_UI(TypeGrille *grille, int nb_bateaux)
+{
+    int latitude;
+    int longitude;
+    for(int i=0; i<nb_bateaux; i++)
+    {
+        printf("Entrez les coordonnées du bateau %d (ligne colonne) :", i);
+        scanf("%d %d", &latitude, &longitude);
+        add_bateau(grille, *latitude, *longitude)
+    }
 }
