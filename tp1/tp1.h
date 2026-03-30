@@ -1,10 +1,9 @@
 #include <stdbool.h>
-#define NB_COLONNE 10
-#define NB_LIGNE 10
+#define SIZE 10
 
 typedef struct{
     int size;
-    char Grille[NB_LIGNE][NB_COLONNE];
+    char Grille[SIZE][SIZE];
 } TypeGrille;
 
 TypeGrille init_grille(void);

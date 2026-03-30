@@ -12,7 +12,7 @@ int main(void)
     TypeGrille grbot = init_grille();
 
     affiche_grille(grjoueur);
-    add_bateau(&grjoueur, 5, 5);
+    placage_bateaux_UI(&grjoueur,3)
 
     generer_bateaux_aleatoire(&grbot, 3);
 
@@ -25,9 +25,9 @@ int main(void)
 TypeGrille init_grille(void)
 {
     TypeGrille g;
-    g.size = NB_LIGNE;
-    for (int i = 0; i < g.size; i++)
-        for (int j = 0; j < NB_COLONNE; j++)
+    g.size = SIZE;
+    for (int i = 0; i < SIZE; i++)
+        for (int j = 0; j < SIZE; j++)
             g.Grille[i][j] = '.';
     return g;
 }
