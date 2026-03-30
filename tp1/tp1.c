@@ -7,10 +7,12 @@ int main(void)
 
     affiche_Grille(gr1);
     add_boat(&gr1, 5, 5);
-    printf("\nAprès ajout bateau:\n");
+
     affiche_Grille(gr1);
     tirer(&gr1, 5, 5);
     tirer(&gr1, 0, 0);
+
+    affiche_Grille(gr1);
     return 0;
 }
 
