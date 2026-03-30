@@ -105,7 +105,7 @@ void tirer (Joueur *joueur, int latitude, int longitude, int *tour)
     {
         printf("pizza avec ananas\n");
         joueur->grille.Grille[latitude][longitude] = 'O';
-        if (*tour = 1)
+        if (*tour == 1)
         {
             *tour = 0;
         }else
