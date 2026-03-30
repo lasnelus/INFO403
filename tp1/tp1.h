@@ -3,4 +3,6 @@
 
 typedef int Grille[NB_LIGNE][NB_COLONNE];
 
-void affiche_Grille(void);
+void affiche_Grille(Grille grid);
+
+void add_boat(Grille *grid, int latitude, int longitude);
