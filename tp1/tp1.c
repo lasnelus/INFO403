@@ -42,7 +42,7 @@ void affiche_Grille(Grille grid)
 
 void tirer (Grille *grid, int latitude, int longitude)
 {
-    if (check_Touche(*grid), latitude, longitude)
+    if (check_Touche(*grid, latitude, longitude))
     {
         printf("pizza sans ananas");
     }else{
@@ -51,5 +51,5 @@ void tirer (Grille *grid, int latitude, int longitude)
 }
 
 bool check_Touche (Grille grid, int latitude, int longitude){
-    grid[latitude][longitude] = "B";
+    grid[latitude][longitude] = 'B';
 }
