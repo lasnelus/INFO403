@@ -70,21 +70,21 @@ void add_bateau(TypeGrille *grid, int latitude, int longitude)
 
 void tirer (Joueur *joueur, int latitude, int longitude)
 {
-    if (latitude < 0 || latitude >= joueur.grille->taille || longitude < 0 || longitude >= grid->taille) {
+    if (latitude < 0 || latitude >= joueur->grille->taille || longitude < 0 || longitude >= joueur->grille->taille) {
         printf("Coordonnées hors limites\n");
         return;
     }
 
-    if (check_touche(*joueur->grille, latitude, longitude))
+    if (check_touche(joueur->grille, latitude, longitude))
     {
         printf("pizza sans ananas\n");
-        joueur.grille->Grille[latitude][longitude] = 'X';
-        joueur->nb_bateau->joueur.nb_bateau-1;
+        joueur->grille->Grille[latitude][longitude] = 'X';
+        joueur->nb_bateau = joueur.nb_bateau-1;
     }
     else
     {
         printf("pizza avec ananas\n");
-        joueur->grille->Grille[latitude][longitude] = 'O';
+        joueur->grille = Grille[latitude][longitude] = 'O';
     }
 }
 
