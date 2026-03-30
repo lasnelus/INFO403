@@ -6,13 +6,13 @@ int main(void)
     TypeGrille grjoueur = init_grille();
     TypeGrille grbot = init_grille();
 
-    affiche_Grille(gr1);
-    add_boat(&gr1, 5, 5);
+    affiche_Grille(grjoueur);
+    add_boat(&grjoueur, 5, 5);
 
-    affiche_Grille(gr1);
-    tirer_UI(&grbot)
+    affiche_Grille(grjoueur);
+    tirer_UI(&grbot);
 
-    affiche_Grille(gr1);
+    affiche_Grille(grbot);
     return 0;
 }
 
@@ -66,7 +66,9 @@ TypeGrille init_grille(void)
 }
 
 void tirer_UI(TypeGrille *grille){
+    int latitude;
+    int longitude;
     printf("Entrez les coordonnées de tir (ligne colonne) :");
     scanf("%d %d", latitude longitude);
-    tirer(&grille, latitude, longitude);
+    tirer(grille, latitude, longitude);
 }
