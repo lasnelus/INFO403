@@ -103,6 +103,6 @@ void placage_bateaux_UI(TypeGrille *grille, int nb_bateaux)
     {
         printf("Entrez les coordonnées du bateau %d (ligne colonne) :", i);
         scanf("%d %d", &latitude, &longitude);
-        add_bateau(grille, *latitude, *longitude)
+        add_bateau(grille, latitude, longitude);
     }
 }
