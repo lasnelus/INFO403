@@ -2,12 +2,17 @@
 #define NB_COLONNE 10
 #define NB_LIGNE 10
 
-typedef char Grille[NB_LIGNE][NB_COLONNE];
+typedef struct{
+    int size;
+    char Grille[size][size];
+} TypeGrille;
 
-void affiche_Grille(Grille grid);
+void affiche_Grille(TypeGrille grille);
 
-void add_boat(Grille *grid, int latitude, int longitude);
+void add_boat(TypeGrille *grille, int latitude, int longitude);
 
-void tirer (Grille *grid, int latitude, int longitude);
+void tirer (TypeGrille *grille, int latitude, int longitude);
 
-bool check_Touche (Grille grid, int latitude, int longitude);
+bool check_Touche (TypeGrille grille, int latitude, int longitude);
+
+TypeGrille init_grille(void);
