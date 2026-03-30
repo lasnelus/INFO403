@@ -18,6 +18,8 @@ bool check_touche (TypeGrille grille, int latitude, int longitude);
 
 void generer_bateaux_aleatoire(TypeGrille *grille, int nb_bateaux);
 
+void tire_aleatoire(TypeGrille *grille);
+
 
 void tirer_UI(TypeGrille *grille);
 

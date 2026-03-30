@@ -16,7 +16,7 @@ int main(void)
 
     generer_bateaux_aleatoire(&grbot, 3);
 
-
+    tire_aleatoire(&grjoueur);
     affiche_grille(grjoueur);
     affiche_grille(grbot);
     return 0;
@@ -42,9 +42,9 @@ void affiche_grille(TypeGrille grid)
     {
         printf("%d ", i);
         for (int j = 0; j < grid.size; j++)
-        {
-            printf("%c ", grid.Grille[i][j]);
+        printf("%c ", grid.Grille[i][j]);
         }
+        {
         printf("\n");
     }
 }
@@ -78,12 +78,21 @@ void generer_bateaux_aleatoire(TypeGrille *grille, int nb_bateaux)
     int longitude;
     for(int i=0; i<nb_bateaux; i++)
     {
-        latitude = (int)(((double)rand()/RAND_MAX) * 10);
-        longitude = (int)(((double)rand()/RAND_MAX) * 10);
-        printf("generating at %d, %d",latitude ,longitude);
+        latitude = rand()%20;
+        longitude = rand()%20;
         add_bateau(grille, latitude, longitude);
     }
 }
+
+void tire_aleatoire(TypeGrille *grille)
+{
+    int latitude = rand()%20;
+    int longitude = rand()%20;
+    tirer(grille, latitude, longitude);
+}
+
+
+
 
 
 
