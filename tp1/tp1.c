@@ -28,15 +28,13 @@ int main(void)
         if (tour == 0)
         {
             printf("\nVotre tour.\n");
-            tirer_UI(&bot);
+            tirer_UI(&bot, &tour);
         }
         else
         {
             printf("\nTour du bot.\n");
-            tire_aleatoire(&joueur);
+            tire_aleatoire(&joueur, &tour);
         }
-
-        tour = 1 - tour;
     }
 
     if (joueur.nb_bateau <= 0) printf("Le bot a gagné !\n");
@@ -90,7 +88,7 @@ void add_bateau(TypeGrille *grid, int latitude, int longitude)
     grid->Grille[latitude][longitude] = 'B';
 }
 
-void tirer (Joueur *joueur, int latitude, int longitude)
+void tirer (Joueur *joueur, int latitude, int longitude, int *tour)
 {
     if (latitude < 0 || latitude >= joueur->grille.taille || longitude < 0 || longitude >= joueur->grille.taille) {
         printf("Coordonnées hors limites\n");
@@ -107,6 +105,13 @@ void tirer (Joueur *joueur, int latitude, int longitude)
     {
         printf("pizza avec ananas\n");
         joueur->grille.Grille[latitude][longitude] = 'O';
+        if (tour = 1)
+        {
+            *tour = 0;
+        }else
+        {
+            *tour = 1;
+        }
     }
 }
 
@@ -126,11 +131,11 @@ void generer_bateaux_aleatoire(TypeGrille *grille, int nb_bateaux)
     }
 }
 
-void tire_aleatoire(Joueur *joueur)
+void tire_aleatoire(Joueur *joueur, int *tour)
 {
     int latitude = rand() % SIZE;
     int longitude = rand() % SIZE;
-    tirer(joueur, latitude, longitude);
+    tirer(joueur, latitude, longitude, tour);
 }
 
 
@@ -138,12 +143,12 @@ void tire_aleatoire(Joueur *joueur)
 
 
 
-void tirer_UI(Joueur *joueur){
+void tirer_UI(Joueur *joueur, int *tour){
     int latitude;
     int longitude;
     printf("Entrez les coordonnées de tir (ligne colonne) :");
     scanf("%d %d", &latitude, &longitude);
-    tirer(joueur, latitude, longitude);
+    tirer(joueur, latitude, longitude, tour);
 }
 
 void placage_bateaux_UI(TypeGrille *grille, int nb_bateaux)
