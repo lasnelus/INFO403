@@ -12,7 +12,7 @@ int main(void)
     TypeGrille grbot = init_grille();
 
     affiche_grille(grjoueur);
-    placage_bateaux_UI(&grjoueur,3)
+    placage_bateaux_UI(&grjoueur,3);
 
     generer_bateaux_aleatoire(&grbot, 3);
 
