@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "tp1.h"
+#define RAND_MAX 10
 
 int main(void)
 {
