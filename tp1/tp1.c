@@ -79,7 +79,7 @@ void tirer (Joueur *joueur, int latitude, int longitude)
     {
         printf("pizza sans ananas\n");
         joueur->grille.Grille = Grille[latitude][longitude] = 'X';
-        joueur->nb_bateau = joueur.nb_bateau-1;
+        joueur->nb_bateau = joueur->nb_bateau-1;
     }
     else
     {
