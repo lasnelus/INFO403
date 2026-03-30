@@ -5,7 +5,7 @@
 
 int main(void)
 {
-    srand((unsigned)time(NULL));
+    srand(time(NULL));
 
     Joueur joueur = init_joueur(3);
     Joueur bot = init_joueur(3);
@@ -98,10 +98,10 @@ void tirer (Joueur *joueur, int latitude, int longitude, int *tour)
         return;
     }else
     {
-        printf("tire en %d %d", latitude, longitude);
+        printf("tire en %d %d\n", latitude, longitude);
         if (check_touche(joueur->grille, latitude, longitude))
         {
-            printf("navir touché\n");
+            printf("BOOM\n");
             joueur->grille.Grille[latitude][longitude] = 'X';
             if (joueur->nb_bateau > 0) joueur->nb_bateau--;
         }
