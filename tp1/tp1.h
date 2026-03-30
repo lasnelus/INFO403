@@ -21,15 +21,15 @@ void affiche_grille(TypeGrille grille);
 
 void add_bateau(TypeGrille *grille, int latitude, int longitude);
 
-void tirer (TypeGrille *grille, int latitude, int longitude);
+void tirer (Joueur *joueur, int latitude, int longitude);
 
 bool check_touche (TypeGrille grille, int latitude, int longitude);
 
 void generer_bateaux_aleatoire(TypeGrille *grille, int nb_bateaux);
 
-void tire_aleatoire(TypeGrille *grille);
+void tire_aleatoire(Joueur *joueur);
 
 
-void tirer_UI(TypeGrille *grille);
+void tirer_UI(Joueur *joueur);
 
 void placage_bateaux_UI(TypeGrille *grille, int nb_bateaux);

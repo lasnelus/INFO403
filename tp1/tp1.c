@@ -10,7 +10,6 @@ int main(void)
     Joueur joueur = init_joueur(3);
     Joueur bot = init_joueur(3);
 
-    affiche_grille(joueur.grille);
     placage_bateaux_UI(&joueur.grille,joueur.nb_bateau);
 
     generer_bateaux_aleatoire(&bot.grille, bot.nb_bateau);
@@ -18,10 +17,9 @@ int main(void)
     affiche_grille(joueur.grille);
     affiche_grille(bot.grille);
 
-    tire_aleatoire(&joueur.grille);
+    tire_aleatoire(&joueur);
 
     affiche_grille(joueur.grille);
-    affiche_grille(bot.grille);
     return 0;
 }
 
@@ -70,28 +68,27 @@ void add_bateau(TypeGrille *grid, int latitude, int longitude)
     grid->Grille[latitude][longitude] = 'B';
 }
 
-void tirer (TypeGrille *grid, int latitude, int longitude)
+void tirer (Joueur *joueur, int latitude, int longitude)
 {
     if (latitude < 0 || latitude >= grid->taille || longitude < 0 || longitude >= grid->taille) {
         printf("Coordonnées hors limites\n");
         return;
     }
 
-    if (check_touche(*grid, latitude, longitude))
+    if (check_touche(*joueur.grille, latitude, longitude))
     {
         printf("pizza sans ananas\n");
-        grid->Grille[latitude][longitude] = 'X';
+        joueur.grille->Grille[latitude][longitude] = 'X';
+        joueur.nb_bateau->joueur.nb_bateau-1;
     }
     else
     {
         printf("pizza avec ananas\n");
-        grid->Grille[latitude][longitude] = 'O';
+        joueur.grille->Grille[latitude][longitude] = 'O';
     }
 }
 
 bool check_touche (TypeGrille grid, int latitude, int longitude){
-    if (latitude < 0 || latitude >= grid.taille) return false;
-    if (longitude < 0 || longitude >= grid.taille) return false;
     return grid.Grille[latitude][longitude] == 'B';
 }
 
@@ -107,11 +104,11 @@ void generer_bateaux_aleatoire(TypeGrille *grille, int nb_bateaux)
     }
 }
 
-void tire_aleatoire(TypeGrille *grille)
+void tire_aleatoire(Joueur *joueur)
 {
     int latitude = rand() % SIZE;
     int longitude = rand() % SIZE;
-    tirer(grille, latitude, longitude);
+    tirer(joueur, latitude, longitude);
 }
 
 
@@ -119,12 +116,12 @@ void tire_aleatoire(TypeGrille *grille)
 
 
 
-void tirer_UI(TypeGrille *grille){
+void tirer_UI(Joueur *joueur){
     int latitude;
     int longitude;
     printf("Entrez les coordonnées de tir (ligne colonne) :");
     scanf("%d %d", &latitude, &longitude);
-    tirer(grille, latitude, longitude);
+    tirer(joueur, latitude, longitude);
 }
 
 void placage_bateaux_UI(TypeGrille *grille, int nb_bateaux)
