@@ -17,6 +17,7 @@ int main(void)
     };
 
     affiche_Grille(gr1);
+    printf("???");
     tirer(&gr1, 5, 5);
     return 0;
 }
