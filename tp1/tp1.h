@@ -18,3 +18,5 @@ void tirer (TypeGrille *grille, int latitude, int longitude);
 bool check_Touche (TypeGrille grille, int latitude, int longitude);
 
 TypeGrille init_grille(void);
+
+void tirer_UI(TypeGrille *grille);

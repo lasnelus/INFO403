@@ -3,14 +3,14 @@
 
 int main(void)
 {
-    TypeGrille gr1 = init_grille();
+    TypeGrille grjoueur = init_grille();
+    TypeGrille grbot = init_grille();
 
     affiche_Grille(gr1);
     add_boat(&gr1, 5, 5);
 
     affiche_Grille(gr1);
-    tirer(&gr1, 5, 5);
-    tirer(&gr1, 0, 0);
+    tirer_UI(&grbot)
 
     affiche_Grille(gr1);
     return 0;
@@ -18,7 +18,7 @@ int main(void)
 
 void affiche_Grille(TypeGrille grid)
 {
-    printf("   ");
+    printf("  ");
     for (int c = 0; c < grid.size; c++) printf("%d ", c);
     printf("\n");
     for (int i = 0; i < grid.size; i++)
@@ -52,8 +52,6 @@ void tirer (TypeGrille *grid, int latitude, int longitude)
 }
 
 bool check_Touche (TypeGrille grid, int latitude, int longitude){
-    if (latitude < 0 || latitude >= grid.size) return false;
-    if (longitude < 0 || longitude >= NB_COLONNE) return false;
     return grid.Grille[latitude][longitude] == 'B';
 }
 
@@ -65,4 +63,10 @@ TypeGrille init_grille(void)
         for (int j = 0; j < NB_COLONNE; j++)
             g.Grille[i][j] = '.';
     return g;
+}
+
+void tirer_UI(TypeGrille *grille){
+    printf("Entrez les coordonnées de tir (ligne colonne) :");
+    scanf("%d %d", latitude longitude);
+    tirer(&grille, latitude, longitude);
 }
