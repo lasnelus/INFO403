@@ -5,21 +5,43 @@
 
 int main(void)
 {
-    srand(time(NULL));
+    srand((unsigned)time(NULL));
 
     Joueur joueur = init_joueur(3);
     Joueur bot = init_joueur(3);
 
-    placage_bateaux_UI(&joueur.grille,joueur.nb_bateau);
+    printf("Placement des bateaux du joueur:\n");
+    placage_bateaux_UI(&joueur.grille, joueur.nb_bateau);
 
+    printf("Placement aléatoire des bateaux du bot...\n");
     generer_bateaux_aleatoire(&bot.grille, bot.nb_bateau);
 
-    affiche_grille(joueur.grille);
-    affiche_grille(bot.grille);
+    int tour = 0; // 0 = joueur, 1 = bot
+    while (joueur.nb_bateau > 0 && bot.nb_bateau > 0)
+    {
+        printf("\n--- Etat des grilles ---\n");
+        printf("Joueur (vos bateaux) :\n");
+        affiche_grille(joueur.grille);
+        printf("Bot :\n");
+        affiche_grille(bot.grille);
 
-    tire_aleatoire(&joueur);
+        if (tour == 0)
+        {
+            printf("\nVotre tour.\n");
+            tirer_UI(&bot);
+        }
+        else
+        {
+            printf("\nTour du bot.\n");
+            tire_aleatoire(&joueur);
+        }
 
-    affiche_grille(joueur.grille);
+        tour = 1 - tour;
+    }
+
+    if (joueur.nb_bateau <= 0) printf("Le bot a gagné !\n");
+    else printf("Vous avez gagné !\n");
+
     return 0;
 }
 
@@ -78,13 +100,13 @@ void tirer (Joueur *joueur, int latitude, int longitude)
     if (check_touche(joueur->grille, latitude, longitude))
     {
         printf("pizza sans ananas\n");
-        joueur->grille.Grille = Grille[latitude][longitude] = 'X';
-        joueur->nb_bateau = joueur->nb_bateau-1;
+        joueur->grille.Grille[latitude][longitude] = 'X';
+        if (joueur->nb_bateau > 0) joueur->nb_bateau--;
     }
     else
     {
         printf("pizza avec ananas\n");
-        joueur->grille.Grille = TypeGrille[latitude][longitude] = 'O';
+        joueur->grille.Grille[latitude][longitude] = 'O';
     }
 }
 
