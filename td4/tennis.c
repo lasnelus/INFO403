@@ -39,7 +39,7 @@ int main(void) {
   ajouterResultatMatch(&tournoi, federer, sampras, score_v2, nb_sets_2);
 
   afficherTournoi(tournoi);
-  sauvegarderTournoi()
+  sauvegarderTournoi(tournoi, "save.txt");
   return EXIT_SUCCESS;
 }
 
@@ -183,7 +183,7 @@ void sauvegarderTournoi(Tournoi t, char *f) {
   while (match != NULL)
   {
     sauvegarderMatch(*match, fichier);
-    match = match-> suivant
+    match = match-> suivant;
   }
   fclose(fichier);
 }
