@@ -177,4 +177,23 @@ void sauvegarderTournoi(Tournoi t, FILE f) {
     perror("Fichier non ouvert");
     exit(EXIT_FAILURE);
   }
+
+  Match *match= tournoi;
+
+  while (match != NULL)
+  {
+    sauvegarderMatch(*match, fichier);
+    match = match-> suivant
+  }
+  fclose(fichier);
+}
+
+void sauvegarderMatch(Match match, FILE *fichier)
+{
+  fprintf(fichier, "%s,%s,%d", match.nomJ1, match.nomJ2, match.);
+
+  for(int i = 0; i<match.nombre_stes; i++){
+    int score[2]=match.score[i];
+    fprintf(fichier, "%d-%d\n", score[0], score[1]);
+  }
 }

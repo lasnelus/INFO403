@@ -38,4 +38,6 @@ void libererTournoi(Tournoi *tournoi);
 Tournoi lireTournoi(FILE *fichier);
 
 void sauvegarderTournoi(Tournoi t, FILE f);
+
+void sauvegarderMatch(Match match, FILE *fichier);
 #endif
