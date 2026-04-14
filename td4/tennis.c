@@ -169,7 +169,7 @@ Steffi Graf,Serena Williams,2
 5-7
 4-6
 */
-void sauvegarderTournoi(Tournoi t, FILE f) {
+void sauvegarderTournoi(Tournoi t, char *f) {
   FILE* fichier = fopen(f, "w");
 
   if (fichier == NULL)
