@@ -7,6 +7,7 @@ TD 4 - GESTION TOURNOIS DE TENNIS
 #include "tennis.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 // Gestion d'un tournoi de tennis
 
