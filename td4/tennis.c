@@ -152,14 +152,13 @@ Tournoi lireTournoi(char *f) {
   int nbSet;
   int nbElts = fscanf(fichier, " %[^,],%[^,],%d\n", joueur1, joueur2, &nbSet);
   while (nbElts == 3) {
-    int (*scores)[2] = malloc(nbSet * sizeof(int[2]));
     int score[nbSet][2];
 
     for (int i = 0; i < nbSet; i++) {
       fscanf(fichier, "%d-%d\n", &scores[i][0], &scores[i][1]);
     }
 
-    ajouterResultatMatch(&tournoi, joueur1, joueur2, scores, nbSet);
+    ajouterResultatMatch(&tournoi, joueur1, joueur2, score, nbSet);
     nbElts = fscanf(fichier, " %[^,],%[^,],%d\n", joueur1, joueur2, &nbSet);
   }
 
