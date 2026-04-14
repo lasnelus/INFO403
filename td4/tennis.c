@@ -48,8 +48,10 @@ void ajouterResultatMatch(Tournoi *tournoi, char *joueur1, char *joueur2,
                           int sets[][2], int nombreSets) {
   // Nouveau match
   Match *m = (Match *)malloc(sizeof(Match));
-  m->joueur1 = joueur1;
-  m->joueur2 = joueur2;
+  m->joueur1 = malloc(strlen(joueur1)+1);
+  m->joueur1 = malloc(strlen(joueur1)+1);
+  strcpy(m->joueur1, joueur1);
+  strcpy(m->joueur2, joueur2);
   m->scoreParSet = sets;
   m->nbSets = nombreSets;
 
