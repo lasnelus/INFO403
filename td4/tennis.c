@@ -128,15 +128,32 @@ tournoi de tennis.
 Lis un fichier de representation d'un tournoi et renvoie le tournoi correspondant
 */
 Tournoi lireTournoi(FILE *fichier) {
+  Tournoi tournoi = NULL;
+
+  char joueur1[100];
+  char joueur2[100];
   int nbSet;
-  char *joueur1;
-  char *joueur2;
-  fscanf("%s, %s, %d", joueur1, joueur2, nbSet);
-  int scores[nbSet][2];
-  for (int i = 0; i < nbSet; i++) {
-    fscanf("%d-%d", score1, score2);
-    scores[1]={score1, score2};
+  
+  while (fscanf(fichier, " %99[^,],%99[^,],%d\n", joueur1, joueur2, &nbSet) == 3) {
+
+    int (*scores)[2] = malloc(nbSet * sizeof(int[2]));
+
+    for (int i = 0; i < nbSet; i++) {
+      int s1, s2;
+      fscanf(fichier, "%d-%d\n", &s1, &s2);
+      scores[i][0] = s1;
+      scores[i][1] = s2;
+    }
+
+    char *j1 = malloc(strlen(joueur1) + 1);
+    char *j2 = malloc(strlen(joueur2) + 1);
+    strcpy(j1, joueur1);
+    strcpy(j2, joueur2);
+
+    ajouterResultatMatch(&tournoi, j1, j2, scores, nbSet);
   }
+
+  return tournoi;
 }
 
 /**
