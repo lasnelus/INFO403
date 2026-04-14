@@ -170,7 +170,7 @@ Steffi Graf,Serena Williams,2
 4-6
 */
 void sauvegarderTournoi(Tournoi t, FILE f) {
-  FILE* fichier = fopen(nom_fichier, "w");
+  FILE* fichier = fopen(f, "w");
 
   if (fichier == NULL)
   {
@@ -178,7 +178,7 @@ void sauvegarderTournoi(Tournoi t, FILE f) {
     exit(EXIT_FAILURE);
   }
 
-  Match *match= tournoi;
+  Match *match= t;
 
   while (match != NULL)
   {
