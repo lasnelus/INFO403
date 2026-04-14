@@ -131,10 +131,10 @@ Tournoi lireTournoi(FILE *fichier) {
   int nbSet;
   char *joueur1;
   char *joueur2;
-  fscanf("%s, %s, %d", joueur1 joueur2 nbSet);
+  fscanf("%s, %s, %d", joueur1, joueur2, nbSet);
   int scores[nbSet][2];
   for (int i = 0; i < nbSet; i++) {
-    fscanf("%d-%d", score1 score2);
+    fscanf("%d-%d", score1, score2);
     scores[1]={score1, score2};
   }
 }
