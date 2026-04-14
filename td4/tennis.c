@@ -135,7 +135,7 @@ Tournoi lireTournoi(FILE *fichier) {
   char joueur2[100];
   int nbSet;
   
-  while (fscanf(fichier, " %99[^,],%99[^,],%d\n", joueur1, joueur2, &nbSet) == 3) {
+  while (fscanf(fichier, " %s,%s,%d\n", joueur1, joueur2, &nbSet) == 3) {
 
     int (*scores)[2] = malloc(nbSet * sizeof(int[2]));
 
