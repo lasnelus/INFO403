@@ -131,29 +131,29 @@ Lis un fichier de representation d'un tournoi et renvoie le tournoi correspondan
 */
 Tournoi lireTournoi(char *f) {
   FILE* fichier = fopen(f, "r");
+
+  if (fichier == NULL)
+  {
+    perror("Fichier non ouvert");
+    exit(EXIT_FAILURE);
+  }
+
   Tournoi tournoi = NULL;
 
   char joueur1[100];
   char joueur2[100];
   int nbSet;
-  
-  while (fscanf(fichier, " %[^,],%[^,],%d\n", joueur1, joueur2, &nbSet) == 3) {
-
+  int nbElts = fscanf(fichier, " %[^,],%[^,],%d\n", joueur1, joueur2, &nbSet);
+  while (nbElts == 3) {
     int (*scores)[2] = malloc(nbSet * sizeof(int[2]));
+    int score[nbSet][2];
 
     for (int i = 0; i < nbSet; i++) {
-      int s1, s2;
-      fscanf(fichier, "%d-%d\n", &s1, &s2);
-      scores[i][0] = s1;
-      scores[i][1] = s2;
+      fscanf(fichier, "%d-%d\n", &scores[i][0], &scores[i][1]);
     }
 
-    char *j1 = malloc(strlen(joueur1) + 1);
-    char *j2 = malloc(strlen(joueur2) + 1);
-    strcpy(j1, joueur1);
-    strcpy(j2, joueur2);
-
-    ajouterResultatMatch(&tournoi, j1, j2, scores, nbSet);
+    ajouterResultatMatch(&tournoi, joueur1, joueur2, scores, nbSet);
+    nbElts = fscanf(fichier, " %[^,],%[^,],%d\n", joueur1, joueur2, &nbSet);
   }
 
   return tournoi;
