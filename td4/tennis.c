@@ -39,7 +39,7 @@ int main(void) {
   ajouterResultatMatch(&tournoi, federer, sampras, score_v2, nb_sets_2);
 
   Tournoi tournoi2 = lireTournoi("save.txt");
-  afficherTournoi(tournoi);
+  afficherTournoi(tournoi2);
   sauvegarderTournoi(tournoi, "save.txt");
   return EXIT_SUCCESS;
 }
