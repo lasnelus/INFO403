@@ -190,9 +190,9 @@ void sauvegarderTournoi(Tournoi t, FILE f) {
 
 void sauvegarderMatch(Match match, FILE *fichier)
 {
-  fprintf(fichier, "%s,%s,%d\n", match.nomJ1, match.nomJ2, match.);
+  fprintf(fichier, "%s,%s,%d\n", match.joueur1, match.joueur2, match.nbSets);
 
-  for(int i = 0; i<match.nombre_stes; i++){
+  for(int i = 0; i<match.nbSets; i++){
     int score[2]=match.score[i];
     fprintf(fichier, "%d-%d\n", score[0], score[1]);
   }
