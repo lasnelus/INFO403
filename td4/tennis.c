@@ -128,7 +128,10 @@ tournoi de tennis.
 Lis un fichier de representation d'un tournoi et renvoie le tournoi correspondant
 */
 Tournoi lireTournoi(FILE *fichier) {
-  fscanf("%s, %s, %d", joueur1 joueur2 nbSet);
+  int nbSet;
+  char *joueur1;
+  char *joueur2;
+  fscanf("%s, %s, %d", &joueur1 &joueur2 &nbSet);
   int scores[nbSet][2];
   for (int i = 0; i < nbSet; i++) {
     fscanf("%d-%d", score1 score2);
