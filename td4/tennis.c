@@ -192,8 +192,9 @@ void sauvegarderMatch(Match match, FILE *fichier)
 {
   fprintf(fichier, "%s,%s,%d\n", match.joueur1, match.joueur2, match.nbSets);
 
-  for(int i = 0; i<match.nbSets; i++){
-    int *score[2] = match.scoreParSet[i];
+  for(int i = 0; i<match.nbSets; i++)
+  {
+    int *score = match.scoreParSet[i];
     fprintf(fichier, "%d-%d\n", score[0], score[1]);
   }
 }
