@@ -39,7 +39,7 @@ int main(void) {
   ajouterResultatMatch(&tournoi, federer, sampras, score_v2, nb_sets_2);
 
   afficherTournoi(tournoi);
-
+  sauvegarderTournoi()
   return EXIT_SUCCESS;
 }
 
@@ -190,7 +190,7 @@ void sauvegarderTournoi(Tournoi t, FILE f) {
 
 void sauvegarderMatch(Match match, FILE *fichier)
 {
-  fprintf(fichier, "%s,%s,%d", match.nomJ1, match.nomJ2, match.);
+  fprintf(fichier, "%s,%s,%d\n", match.nomJ1, match.nomJ2, match.);
 
   for(int i = 0; i<match.nombre_stes; i++){
     int score[2]=match.score[i];
