@@ -38,7 +38,8 @@ int main(void) {
 
   ajouterResultatMatch(&tournoi, federer, sampras, score_v2, nb_sets_2);
 
-  lireTournoi("save.txt");
+  Tournoi tournoi2 = lireTournoi("save.txt");
+  afficherTournoi(tournoi);
   sauvegarderTournoi(tournoi, "save.txt");
   return EXIT_SUCCESS;
 }
@@ -136,7 +137,7 @@ Tournoi lireTournoi(char *f) {
   char joueur2[100];
   int nbSet;
   
-  while (fscanf(fichier, " %s,%s,%d\n", joueur1, joueur2, &nbSet) == 3) {
+  while (fscanf(fichier, " %[^,],%[^,],%d\n", joueur1, joueur2, &nbSet) == 3) {
 
     int (*scores)[2] = malloc(nbSet * sizeof(int[2]));
 
