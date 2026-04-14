@@ -44,16 +44,21 @@ int main(void) {
   return EXIT_SUCCESS;
 }
 
-void ajouterResultatMatch(Tournoi *tournoi, char *joueur1, char *joueur2,
+void ajouterResultatMatch(Tournoi *tournoi, char *J1, char *J2,
                           int sets[][2], int nombreSets) {
   // Nouveau match
   Match *m = (Match *)malloc(sizeof(Match));
-  m->joueur1 = malloc(strlen(joueur1)+1);
-  m->joueur1 = malloc(strlen(joueur1)+1);
-  strcpy(m->joueur1, joueur1);
-  strcpy(m->joueur2, joueur2);
-  m->scoreParSet = sets;
   m->nbSets = nombreSets;
+  m->joueur1 = malloc(strlen(J1)+1);
+  m->joueur2 = malloc(strlen(J2)+1);
+  strcpy(m->joueur1, J1);
+  strcpy(m->joueur2, J2);
+  m->scoreParSet = malloc(sizeof(int[nombreSets][2]));
+  for (int i = 0; i<nombreSets; i++)
+  {
+    m->scoreParSet[i][0]= sets[i][0];
+    m->scoreParSet[i][1]= sets[i][1];
+  }
 
   // Ajout du match en tête du tournoi
   m->suivant = *tournoi;
