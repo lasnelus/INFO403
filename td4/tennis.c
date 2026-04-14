@@ -38,7 +38,7 @@ int main(void) {
 
   ajouterResultatMatch(&tournoi, federer, sampras, score_v2, nb_sets_2);
 
-  afficherTournoi(tournoi);
+  lireTournoi("save.txt");
   sauvegarderTournoi(tournoi, "save.txt");
   return EXIT_SUCCESS;
 }
@@ -128,7 +128,8 @@ tournoi de tennis.
 /**
 Lis un fichier de representation d'un tournoi et renvoie le tournoi correspondant
 */
-Tournoi lireTournoi(FILE *fichier) {
+Tournoi lireTournoi(char *fichier) {
+  FILE* fichier = fopen(f, "r");
   Tournoi tournoi = NULL;
 
   char joueur1[100];
