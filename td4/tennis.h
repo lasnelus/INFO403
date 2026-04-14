@@ -35,7 +35,7 @@ void libererTournoi(Tournoi *tournoi);
 /* TD5                                                                  */
 /* -------------------------------------------------------------------- */
 
-Tournoi lireTournoi(FILE *fichier);
+Tournoi lireTournoi(char *f);
 
 void sauvegarderTournoi(Tournoi t, char *f);
 

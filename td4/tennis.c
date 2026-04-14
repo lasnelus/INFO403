@@ -128,7 +128,7 @@ tournoi de tennis.
 /**
 Lis un fichier de representation d'un tournoi et renvoie le tournoi correspondant
 */
-Tournoi lireTournoi(char *fichier) {
+Tournoi lireTournoi(char *f) {
   FILE* fichier = fopen(f, "r");
   Tournoi tournoi = NULL;
 
