@@ -155,7 +155,7 @@ Tournoi lireTournoi(char *f) {
     int score[nbSet][2];
 
     for (int i = 0; i < nbSet; i++) {
-      fscanf(fichier, "%d-%d\n", &scores[i][0], &scores[i][1]);
+      fscanf(fichier, "%d-%d\n", &score[i][0], &scores[i][1]);
     }
 
     ajouterResultatMatch(&tournoi, joueur1, joueur2, score, nbSet);
