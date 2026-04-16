@@ -11,6 +11,13 @@
 
 bool solve_rec(maze *m, coord c, Stack *p)
 {
+  // À ce moment-ci, si la pile est non-vide, les coordonnées stack_pop
+  // sur le dessus de p indiquent la case précédente.
+  // Il ne faut surtout pas aller dans cette direction.
+  // Le seul cas où la pile est vide est lorsqu'on est à
+  // l'entrée du labyrinthe.
+  // On ajoute la case actuelle sur la pile.
+
     coord prev;
     bool hasPrev = !stack_empty(p);
 
@@ -27,8 +34,15 @@ bool solve_rec(maze *m, coord c, Stack *p)
     neighboors neig = list_neighboors(m, c);
     coord temp;
 
+    // Si il y a une porte pour aller dans cette direction
+    // ET que ce n'est pas la case précédente :
+
     if (neig.north)
     {
+      //- Calculer les coordonnées de la case dans cette direction
+      // et effectuer un appel récursif sur cette case.
+      // - Si l'appel récursif a retourné vrai
+      // alors retourner vrai (on a trouvé la sortie!).
         temp.x = c.x;
         temp.y = c.y - 1;
         if (!hasPrev || !equal(temp, prev))
@@ -60,31 +74,32 @@ bool solve_rec(maze *m, coord c, Stack *p)
                 return true;
     }
 
+    // Si on a testé toutes les directions et qu'aucune n'a mené à la sortie,
+    // alors on dépile les coordonnées de la case actuelle et on retourne faux.
     stack_pop(p);
     return false;
 }
 
 
-void solve(maze *m)
+void solve(maze *m, Stack *p)
 {
-    Stack p;
     coord c;
     bool r;
 
-    stack_init(&p);
+    stack_init(p);
 
     c.x = m->origin->x;
     c.y = m->origin->y;
 
-    r = solve_rec(m, c, &p);
+    r = solve_rec(m, c, p);
     if (r)
     {
-        for (int i = 0; i < p.nb_elem; i++)
-            set_tag(m, p.liste[i], "o");
+        for (int i = 0; i < p->nb_elem; i++)
+            set_tag(m, p->liste[i], "o");
     }
     else
     {
-        printf("Impossible d'atteindre la sortie !!!");
+        printf("Impossible d'atteindre la sortie !!!\n");
     }
 }
 
@@ -139,8 +154,9 @@ int main(int argc, char **argv)
   }
 
   init_maze(&m, w, h);
-  print_maze(&m);
-  solve(&m);
+  Stack p;
+  solve(&m, &p);
+  free_stack(&p);
   print_maze(&m);
   free_maze(&m);
 

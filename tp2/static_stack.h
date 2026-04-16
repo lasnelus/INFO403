@@ -9,9 +9,8 @@
 
 typedef struct _stack
 {
-  coord *liste;
+  coord liste[PILEMAX];
   int nb_elem;
-  int capacity;
 } Stack;
 
 /**
@@ -33,7 +32,5 @@ bool stack_empty(Stack *stack);
 coord stack_pop(Stack *stack);
 
 void stack_push(Stack *stack, coord e);
-
-void free_stack(Stack *stack);
 
 #endif
