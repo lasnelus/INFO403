@@ -23,7 +23,7 @@ bool solve_rec(maze *m, coord c, Stack *p)
 
     if (hasPrev)
     {
-      prev = p->liste[p->nb_elem - 1];
+      prev = stack_peek(p);
     }
     stack_push(p, c);
 
@@ -94,8 +94,11 @@ void solve(maze *m, Stack *p)
     r = solve_rec(m, c, p);
     if (r)
     {
-        for (int i = 0; i < p->nb_elem; i++)
-            set_tag(m, p->liste[i], "o");
+        while (!stack_empty(p))
+        {
+            coord current = stack_pop(p);
+            set_tag(m, current, "o");
+        }
     }
     else
     {

@@ -5,16 +5,13 @@
 #include <stdbool.h>
 #include "coord.h"
 
-typedef struct _stack_node
-{
-  coord value;
-  struct _stack_node *next;
-} StackNode;
+#define PILEMAX 100
 
 typedef struct _stack
 {
-  StackNode *top;
+  coord *liste;
   int nb_elem;
+  int capacity;
 } Stack;
 
 /**
@@ -32,8 +29,6 @@ typedef struct _stack
 void stack_init(Stack *stack);
 
 bool stack_empty(Stack *stack);
-
-coord stack_peek(Stack *stack);
 
 coord stack_pop(Stack *stack);
 
