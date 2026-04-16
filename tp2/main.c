@@ -28,23 +28,23 @@ void mark_neighboors(maze *m, coord c)
   neighboors neig = list_neighboors(m, c);
   set_tag(m, c, "x");
   if(neig.north){
-    temp.x = c.x -1;
-    temp.y = c.y;
+    temp.x = c.x;
+    temp.y = c.y-1;
     set_tag(m, temp, "o");
   }
   if(neig.east){
-    temp.x = c.x;
-    temp.y = c.y+1;
-    set_tag(m, temp, "o");
-  }
-  if(neig.south){
-    temp.x = c.x +1;
+    temp.x = c.x+1;
     temp.y = c.y;
     set_tag(m, temp, "o");
   }
+  if(neig.south){
+    temp.x = c.x ;
+    temp.y = c.y+1;
+    set_tag(m, temp, "o");
+  }
   if(neig.west){
-    temp.x = c.x;
-    temp.y = c.y-1;
+    temp.x = c.x-1;
+    temp.y = c.y;
     set_tag(m, temp, "o");
   }
 }

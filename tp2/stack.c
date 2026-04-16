@@ -3,23 +3,22 @@
 
 void stack_init(Stack *p)
 {
-  (void)p;
+  p->nb_elem = 0;
 }
 
 bool stack_empty(Stack *p)
 {
-  (void)p;
-  return true;
+  return not p.nb_elem > 0;
 }
 
-Element stack_pop(Stack *p)
+coord stack_pop(Stack *p)
 {
-  (void)p;
-  return 0;
+  p.nb_elem = p.nb_elem-1;
+  return p.liste[p.nb_elem];
 }
 
-void stack_push(Stack *p, Element e)
+void stack_push(Stack *p, coord e)
 {
-  (void)p;
-  (void)e;
+  p.liste[p.nb_elem] = e;
+  p.nb_elem = p.nb_elem-1;
 }

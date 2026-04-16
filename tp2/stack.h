@@ -7,11 +7,10 @@
 
 #define PILEMAX 100
 
-typedef int Element;
-
 typedef struct _stack
 {
-  // exo 2
+  coord liste[PILEMAX];
+  int nb_elem;
 } Stack;
 
 /**
@@ -30,8 +29,8 @@ void stack_init(Stack *stack);
 
 bool stack_empty(Stack *stack);
 
-Element stack_pop(Stack *stack);
+coord stack_pop(Stack *stack);
 
-void stack_push(Stack *stack, Element e);
+void stack_push(Stack *stack, coord e);
 
 #endif
