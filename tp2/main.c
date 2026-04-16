@@ -9,14 +9,7 @@
 
 void solve(maze *m)
 {
-  coord c;
-
-  init_maze(&m, w, h);
-  print_maze(&m);
-
-  c.x = 1;
-  c.y = 3;
-  set_tag(&m, c, "o");
+  (void)m; // Supprimez cette ligne !
   // Exo 3
 }
 
@@ -41,8 +34,15 @@ int main(int argc, char **argv)
     exit(EXIT_FAILURE);
   }
 
+  coord c;
+
   init_maze(&m, w, h);
   print_maze(&m);
+
+  c.x = 1;
+  c.y = 3;
+  set_tag(&m, c, "o");
+  
   free_maze(&m);
 
   return 0;
