@@ -34,17 +34,16 @@ int main(int argc, char **argv)
     exit(EXIT_FAILURE);
   }
 
-  coord c;
-
   init_maze(&m, w, h);
-  
-
-  c.x = 1;
-  c.y = 3;
-  set_tag(&m, c, "o");
-
   print_maze(&m);
   free_maze(&m);
 
   return 0;
+}
+
+
+void mark_neighboors(maze* m, coord c)
+{
+  neighboors neig = neilist_neighboors(&m, c.x, c.y);
+  printf(neig);
 }
