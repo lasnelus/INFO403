@@ -37,12 +37,13 @@ int main(int argc, char **argv)
   coord c;
 
   init_maze(&m, w, h);
-  print_maze(&m);
+  
 
   c.x = 1;
   c.y = 3;
   set_tag(&m, c, "o");
-  
+
+  print_maze(&m);
   free_maze(&m);
 
   return 0;
