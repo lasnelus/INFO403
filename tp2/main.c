@@ -33,8 +33,12 @@ int main(int argc, char **argv)
     usage(argv[0]);
     exit(EXIT_FAILURE);
   }
+  coord c;
+  c.x = 1;
+  c.y = 3;
 
   init_maze(&m, w, h);
+  mark_neighboors(&m, c)
   print_maze(&m);
   free_maze(&m);
 
