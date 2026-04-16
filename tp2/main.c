@@ -2,10 +2,10 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdbool.h>
-
 #include "maze.h"
 #include "coord.h"
 #include "stack.h"
+
 
 void solve(maze *m)
 {
@@ -45,26 +45,26 @@ int main(int argc, char **argv)
 void mark_neighboors(maze *m, coord c)
 {
   coord temp;
-  neighboors neig = list_neighboors(&m, c);
-  set_tag(&m, c, "x");
+  neighboors neig = list_neighboors(m, c);
+  set_tag(m, c, "x");
   if(neig.north){
     temp.x = c.x -1;
     temp.y = c.y;
-    set_tag(&m, temp, "o");
+    set_tag(m, temp, "o");
   }
   if(neig.east){
     temp.x = c.x;
     temp.y = c.y+1;
-    set_tag(&m, temp, "o");
+    set_tag(m, temp, "o");
   }
   if(neig.south){
     temp.x = c.x +1;
     temp.y = c.y;
-    set_tag(&m, temp, "o");
+    set_tag(m, temp, "o");
   }
   if(neig.west){
     temp.x = c.x;
     temp.y = c.y-1;
-    set_tag(&m, temp, "o");
+    set_tag(m, temp, "o");
   }
 }
