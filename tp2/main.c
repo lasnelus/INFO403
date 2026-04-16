@@ -38,7 +38,7 @@ int main(int argc, char **argv)
   c.y = 3;
 
   init_maze(&m, w, h);
-  mark_neighboors(&m, c)
+  mark_neighboors(&m, c);
   print_maze(&m);
   free_maze(&m);
 
