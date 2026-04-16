@@ -9,7 +9,14 @@
 
 void solve(maze *m)
 {
-  (void)m; // Supprimez cette ligne !
+  coord c;
+
+  init_maze(&m, w, h);
+  print_maze(&m);
+
+  c.x = 1;
+  c.y = 3;
+  set_tag(&m, c, "o");
   // Exo 3
 }
 
