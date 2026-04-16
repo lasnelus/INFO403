@@ -44,6 +44,6 @@ int main(int argc, char **argv)
 
 void mark_neighboors(maze* m, coord c)
 {
-  neighboors neig = neilist_neighboors(&m, c.x, c.y);
-  printf(neig);
+  neighboors neig = list_neighboors(&m, c.x, c.y);
+  printf(neig.north);
 }
