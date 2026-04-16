@@ -8,7 +8,7 @@ void stack_init(Stack *p)
 
 bool stack_empty(Stack *p)
 {
-  return !p.nb_elem > 0;
+  return !p->nb_elem > 0;
 }
 
 coord stack_pop(Stack *p)
