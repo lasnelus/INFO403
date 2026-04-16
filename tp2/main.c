@@ -22,30 +22,6 @@ void usage(const char *name)
   fprintf(stderr, " h : hauteur du labyrinthe\n");
 }
 
-int main(int argc, char **argv)
-{
-  maze m;
-  int w = (argc > 1 ? atoi(argv[1]) : 10);
-  int h = (argc > 2 ? atoi(argv[2]) : 10);
-
-  if (w < 0 || h < 0 || w * h < 2)
-  {
-    usage(argv[0]);
-    exit(EXIT_FAILURE);
-  }
-  coord c;
-  c.x = 1;
-  c.y = 3;
-
-  init_maze(&m, w, h);
-  mark_neighboors(&m, c);
-  print_maze(&m);
-  free_maze(&m);
-
-  return 0;
-}
-
-
 void mark_neighboors(maze *m, coord c)
 {
   coord temp;
@@ -72,3 +48,30 @@ void mark_neighboors(maze *m, coord c)
     set_tag(m, temp, "o");
   }
 }
+
+
+
+int main(int argc, char **argv)
+{
+  maze m;
+  int w = (argc > 1 ? atoi(argv[1]) : 10);
+  int h = (argc > 2 ? atoi(argv[2]) : 10);
+
+  if (w < 0 || h < 0 || w * h < 2)
+  {
+    usage(argv[0]);
+    exit(EXIT_FAILURE);
+  }
+  coord c;
+  c.x = 1;
+  c.y = 3;
+
+  init_maze(&m, w, h);
+  mark_neighboors(&m, c);
+  print_maze(&m);
+  free_maze(&m);
+
+  return 0;
+}
+
+
