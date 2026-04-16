@@ -13,6 +13,17 @@ bool stack_empty(Stack *p)
   return p->top == NULL;
 }
 
+coord stack_peek(Stack *p)
+{
+  if (stack_empty(p))
+  {
+    fprintf(stderr, "stack_peek on empty stack\n");
+    exit(EXIT_FAILURE);
+  }
+
+  return p->top->value;
+}
+
 coord stack_pop(Stack *p)
 {
   if (stack_empty(p))
