@@ -7,10 +7,85 @@
 #include "stack.h"
 
 
+
+
+bool solve_rec(maze *m, coord c, Stack *p)
+{
+    coord prev;
+    bool hasPrev = !stack_empty(p);
+
+    if (hasPrev)
+    {
+      prev = p->liste[p->nb_elem - 1];
+    }
+    stack_push(p, c);
+
+    if (is_target(m, c))
+    {
+      return true;
+    }
+    neighboors neig = list_neighboors(m, c);
+    coord temp;
+
+    if (neig.north)
+    {
+        temp.x = c.x;
+        temp.y = c.y - 1;
+        if (!hasPrev || !equal(temp, prev))
+            if (solve_rec(m, temp, p))
+                return true;
+    }
+    if (neig.east)
+    {
+        temp.x = c.x + 1;
+        temp.y = c.y;
+        if (!hasPrev || !equal(temp, prev))
+            if (solve_rec(m, temp, p))
+                return true;
+    }
+    if (neig.south)
+    {
+        temp.x = c.x;
+        temp.y = c.y + 1;
+        if (!hasPrev || !equal(temp, prev))
+            if (solve_rec(m, temp, p))
+                return true;
+    }
+    if (neig.west)
+    {
+        temp.x = c.x - 1;
+        temp.y = c.y;
+        if (!hasPrev || !equal(temp, prev))
+            if (solve_rec(m, temp, p))
+                return true;
+    }
+
+    stack_pop(p);
+    return false;
+}
+
+
 void solve(maze *m)
 {
-  (void)m; // Supprimez cette ligne !
-  // Exo 3
+    Stack p;
+    coord c;
+    bool r;
+
+    stack_init(&p);
+
+    c.x = m->origin->x;
+    c.y = m->origin->y;
+
+    r = solve_rec(m, c, &p);
+    if (r)
+    {
+        for (int i = 0; i < p.nb_elem; i++)
+            set_tag(m, p.liste[i], "o");
+    }
+    else
+    {
+        printf("Impossible d'atteindre la sortie !!!");
+    }
 }
 
 void usage(const char *name)
@@ -62,12 +137,10 @@ int main(int argc, char **argv)
     usage(argv[0]);
     exit(EXIT_FAILURE);
   }
-  coord c;
-  c.x = 1;
-  c.y = 3;
 
   init_maze(&m, w, h);
-  mark_neighboors(&m, c);
+  print_maze(&m);
+  solve(&m);
   print_maze(&m);
   free_maze(&m);
 

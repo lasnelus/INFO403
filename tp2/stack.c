@@ -8,7 +8,7 @@ void stack_init(Stack *p)
 
 bool stack_empty(Stack *p)
 {
-  return !p->nb_elem > 0;
+  return !(p->nb_elem > 0);
 }
 
 coord stack_pop(Stack *p)
@@ -20,5 +20,5 @@ coord stack_pop(Stack *p)
 void stack_push(Stack *p, coord e)
 {
   p->liste[p->nb_elem] = e;
-  p->nb_elem = p->nb_elem-1;
+  p->nb_elem = p->nb_elem + 1;
 }
