@@ -40,4 +40,6 @@ Tournoi lireTournoi(char *f);
 void sauvegarderTournoi(Tournoi t, char *f);
 
 void sauvegarderMatch(Match match, FILE *fichier);
+
+void lireEtAfficherTournoi(char *f);
 #endif

@@ -8,6 +8,8 @@ TD 4 - GESTION TOURNOIS DE TENNIS
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
+#define PATH = 
 
 // Gestion d'un tournoi de tennis
 
@@ -20,33 +22,67 @@ représenté par le nb de jeux gagnés par chaque joueurs
 
 // #pragma region TD4
 int main(void) {
-  Tournoi tournoi = NULL;
+  bool fin_options= true;
+  do
+  {
+    char option = getopt(argc, argv, "f:a");
 
-  char *sabalenka = "Aryna Sabalenka";
-  char *rybakina = "Elena Rybakina";
+    switch (option)
+    {
+      case 'f':
+        lireEtAfficherTournoi(optarg);
+        break;
+      case 'a':
+        ajouter NouveauMatch(optarg);
+        break;
+      case -1:
+        fin_options = true
+    }
+  } while (fin_options = false);
+  
 
-  int nb_sets = 3;
-  int score[3][2] = {{6, 1}, {3, 6}, {5, 2}};
+  // char *sabalenka = "Aryna Sabalenka";
+  // char *rybakina = "Elena Rybakina";
 
-  ajouterResultatMatch(&tournoi, sabalenka, rybakina, score, nb_sets);
+  // int nb_sets = 3;
+  // int score[3][2] = {{6, 1}, {3, 6}, {5, 2}};
 
-  char *federer = "Roger Federer";
-  char *sampras = "Pete sampras";
+  // ajouterResultatMatch(&tournoi, sabalenka, rybakina, score, nb_sets);
 
-  int nb_sets_2 = 4;
-  int score_v2[4][2] = {{6, 3}, {5, 7}, {6, 4}, {6, 2}};
+  // char *federer = "Roger Federer";
+  // char *sampras = "Pete sampras";
 
-  ajouterResultatMatch(&tournoi, federer, sampras, score_v2, nb_sets_2);
+  // int nb_sets_2 = 4;
+  // int score_v2[4][2] = {{6, 3}, {5, 7}, {6, 4}, {6, 2}};
 
-  Tournoi tournoi2 = lireTournoi("save.txt");
-  afficherTournoi(tournoi2);
-  sauvegarderTournoi(tournoi, "save.txt");
+  // ajouterResultatMatch(&tournoi, federer, sampras, score_v2, nb_sets_2);
+
+  // Tournoi tournoi2 = lireTournoi("save.txt");
+  // afficherTournoi(tournoi2);
+  // sauvegarderTournoi(tournoi, "save.txt");
   return EXIT_SUCCESS;
+}
+
+void lireEtAfficherTournoi(char *f)
+{
+  Tournoi tournoi = lireTournoi(f);
+  afficherTournoi(tournoi);
+  libererTournoi(&tournoi);
+}
+
+
+void ajouterNouveauMatch(char *match)
+{
+  char *joueur1= strtok(match,",");
+  printf("\n\n%s\n\n", joueur1);
+  char *joueur1= strtok(NULL,",");
+  printf("%s\n\n", joueur1);
+
 }
 
 void ajouterResultatMatch(Tournoi *tournoi, char *J1, char *J2,
                           int sets[][2], int nombreSets) {
-  // Nouveau match
+  // Nouveau match  
   Match *m = (Match *)malloc(sizeof(Match));
   m->nbSets = nombreSets;
   m->joueur1 = malloc(strlen(J1)+1);
