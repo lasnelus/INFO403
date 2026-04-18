@@ -77,6 +77,7 @@ bool solve_rec(maze *m, coord c, Stack *p)
     // Si on a testé toutes les directions et qu'aucune n'a mené à la sortie,
     // alors on dépile les coordonnées de la case actuelle et on retourne faux.
     stack_pop(p);
+    return false
 }
 
 
