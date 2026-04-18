@@ -77,9 +77,17 @@ bool solve_rec(maze *m, coord c, Stack *p)
     // Si on a testé toutes les directions et qu'aucune n'a mené à la sortie,
     // alors on dépile les coordonnées de la case actuelle et on retourne faux.
     stack_pop(p);
-    return false;
 }
 
+
+void mark_path(maze *m, Stack *p, const char *mark)
+{
+    while (!stack_empty(p))
+    {
+        coord current = stack_pop(p);
+        set_tag(m, current, mark);
+    }
+}
 
 void solve(maze *m, Stack *p)
 {
@@ -94,11 +102,7 @@ void solve(maze *m, Stack *p)
     r = solve_rec(m, c, p);
     if (r)
     {
-        while (!stack_empty(p))
-        {
-            coord current = stack_pop(p);
-            set_tag(m, current, "o");
-        }
+        mark_path(m, p, ".");
     }
     else
     {
@@ -165,5 +169,3 @@ int main(int argc, char **argv)
 
   return 0;
 }
-
-

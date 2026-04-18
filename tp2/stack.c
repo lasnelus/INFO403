@@ -17,7 +17,7 @@ coord stack_peek(Stack *p)
 {
   if (stack_empty(p))
   {
-    fprintf(stderr, "stack_peek on empty stack\n");
+    fprintf("stack_peek : pile vide\n");
     exit(EXIT_FAILURE);
   }
 
@@ -28,16 +28,16 @@ coord stack_pop(Stack *p)
 {
   if (stack_empty(p))
   {
-    fprintf(stderr, "stack_pop on empty stack\n");
+    fprintf("stack_pop : pile vide\n");
     exit(EXIT_FAILURE);
   }
 
   StackNode *node = p->top;
-  coord value = node->value;
-  p->top = node->next;
+  coord valeur = node->val;
+  p->top = node->suiv;
   free(node);
   p->nb_elem -= 1;
-  return value;
+  return valeur;
 }
 
 void stack_push(Stack *p, coord e)
@@ -49,8 +49,8 @@ void stack_push(Stack *p, coord e)
     exit(EXIT_FAILURE);
   }
 
-  node->value = e;
-  node->next = p->top;
+  node->val = e;
+  node->suiv = p->top;
   p->top = node;
   p->nb_elem += 1;
 }

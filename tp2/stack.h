@@ -7,8 +7,8 @@
 
 typedef struct _stack_node
 {
-  coord value;
-  struct _stack_node *next;
+  coord val;
+  struct _stack_node *suiv;
 } StackNode;
 
 typedef struct _stack
