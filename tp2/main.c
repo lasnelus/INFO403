@@ -26,6 +26,7 @@ bool solve_rec(maze *m, coord c, Stack *p)
       prev = stack_peek(p);
     }
     stack_push(p, c);
+    set_tag(m, c, ".");
 
     if (is_target(m, c))
     {
@@ -81,15 +82,6 @@ bool solve_rec(maze *m, coord c, Stack *p)
 }
 
 
-void mark_path(maze *m, Stack *p, const char *mark)
-{
-    while (!stack_empty(p))
-    {
-        coord current = stack_pop(p);
-        set_tag(m, current, mark);
-    }
-}
-
 void solve(maze *m, Stack *p)
 {
     coord c;
@@ -103,7 +95,11 @@ void solve(maze *m, Stack *p)
     r = solve_rec(m, c, p);
     if (r)
     {
-        mark_path(m, p, ".");
+        while (!stack_empty(p))
+        {
+            coord current = stack_pop(p);
+            set_tag(m, current, "o");
+        }
     }
     else
     {
@@ -170,3 +166,5 @@ int main(int argc, char **argv)
 
   return 0;
 }
+
+
