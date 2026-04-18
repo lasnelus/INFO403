@@ -17,18 +17,18 @@ coord stack_peek(Stack *p)
 {
   if (stack_empty(p))
   {
-    fprintf("stack_peek : pile vide\n");
+    printf("stack_peek : pile vide\n");
     exit(EXIT_FAILURE);
   }
 
-  return p->top->value;
+  return p->top->val;
 }
 
 coord stack_pop(Stack *p)
 {
   if (stack_empty(p))
   {
-    fprintf("stack_pop : pile vide\n");
+    printf("stack_pop : pile vide\n");
     exit(EXIT_FAILURE);
   }
 
