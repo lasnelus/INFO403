@@ -67,13 +67,13 @@ void free_person(Person *person)
 
 void free_hashtable(Hashtable *table)
 {
-    for(int i=0; i<tabl->size; i++)
+    for(int i=0; i<table->size; i++)
     {
         Person *person = table->person[i];
         if(person != NULL)
-        [
+        {
             free_person(person);
-        ]
+        }
     }
     free(table->person);
 }
