@@ -3,9 +3,9 @@ void main (void)
 
 }
 
-Hashtable init_hashtable(int size)
+hashtable init_hashtable(int size)
 {
-    Hashtable table;
-    table.size = size;
+    hashtable table;
+    table->size = size;
     return table;
 } 
