@@ -27,8 +27,8 @@ Person *create_person(char *name, int age, char *email)
 {
     Person *person = (Person *)malloc(sizeof(Person));
     person->age = age;
-    person->name = strdup(name);
-    person->email = strdup(email);
+    person->name = strcmp(name);
+    person->email = strcmp(email);
     return person;
 }
 
@@ -54,7 +54,7 @@ void remove_person(Hashtable *table, char *name)
     if(person != NULL)
     {
         free_person(person);
-        table->person[index] = NULL
+        table->person[index] = NULL;
     }
 }
 
@@ -67,7 +67,15 @@ void free_person(Person *person)
 
 void free_hashtable(Hashtable *table)
 {
-    free(table);
+    for(int i=0; i<tabl->size; i++)
+    {
+        Person *person = table->person[i];
+        if(person != NULL)
+        [
+            free_person(person);
+        ]
+    }
+    free(table->person);
 }
 
 // bool placed = false;
