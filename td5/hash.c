@@ -37,18 +37,11 @@ void add_person(Hashtable *table, char *name, int age, char *email)
 {
     int index = hash(name, table->size);
     Person *person = create_person(name, age, email);
-    bool placed = false;
-    while(!placed)
+    while(table->person[index] != NULL)
     {
-        if (table.person[index] = NULL)
-        {
-            placed = true;
-            table->person[index] = person;
-        }else
-        {
-            index = (index + 1)%table.size;
-        }
+        index = (index + 1)%table->size;
     }
+    table->person[index] = person;
 }
 
 
