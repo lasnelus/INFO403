@@ -48,7 +48,7 @@ void add_person(Hashtable *table, char *name, int age, char *email)
 Person *find_person(Hashtable table, char *name)
 {
     int index = hash(name, table.size);
-    while (table.person[index].name != name)
+    while (table.person[index]->name != name)
     {
         index = index+1;
     }
