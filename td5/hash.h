@@ -15,7 +15,9 @@ typedef struct
 
 void init_hashtable(int size, Hashtable *table);
 
-void add_person(Hashtable *table, Person person);
+int hash(char *key, int size);
+
+void add_person(Hashtable *table, char *name, int age, char *email);
 
 void find_person(Hashtable table, Person person);
 
