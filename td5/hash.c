@@ -35,9 +35,9 @@ Person *create_person(char *name, int age, char *email)
 
 void add_person(Hashtable *table, char *name, int age, char *email)
 {
-    int hash = hash(name, table.size);
-    Person person = init_person(name, age, email);
-    table->person[hash] = person;
+    int index = hash(name, table->size);
+    Person *person = init_person(name, age, email);
+    table->person[index] = person;
 }
 
 // bool placed = false;
