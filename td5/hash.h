@@ -25,4 +25,6 @@ Person *find_person(Hashtable table, char *name);
 
 void remove_person(Hashtable *table, char *name);
 
+void free_person(Person *person);
+
 void free_hashtable(Hashtable *table);

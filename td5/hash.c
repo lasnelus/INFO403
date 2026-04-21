@@ -49,14 +49,20 @@ Person *find_person(Hashtable table, char *name)
 
 void remove_person(Hashtable *table, char *name)
 {
+    int index = hash(name, table->size);
     Person *person = find_person(*table, name);
-    free_person(person);
+    if(person != NULL)
+    {
+        free_person(person);
+        table->person[index] = NULL
+    }
 }
 
 void free_person(Person *person)
 {
     free(person->name);
     free(person->email);
+    free(person);
 }
 
 void free_hashtable(Hashtable *table)
