@@ -1,9 +1,6 @@
-void main (void)
-{
+#include "hash.h"
 
-}
-
-void init_hashtable(int size, hashtable *table)
+void init_hashtable(int size, Hashtable *table)
 {
     table->size = size;
     table->person = malloc(size * sizeof(Person *));
