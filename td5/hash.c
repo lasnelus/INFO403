@@ -1,6 +1,8 @@
 #include "hash.h"
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
+
 
 void init_hashtable(int size, Hashtable *table)
 {
@@ -37,9 +39,11 @@ void add_person(Hashtable *table, char *name, int age, char *email)
 {
     int index = hash(name, table->size);
     Person *person = create_person(name, age, email);
-    while(table->person[index] != NULL)
+    bool is_free = table->person[index] == NULL || table->person[index] == REMOVED;
+    while(!is_free)
     {
-        index = (index + 1)%table->size;
+        index = (index+1) % table->size;
+        is_free = table->person[index] == NULL || table->person[index] == REMOVED;
     }
     table->person[index] = person;
 }
@@ -48,11 +52,20 @@ void add_person(Hashtable *table, char *name, int age, char *email)
 Person *find_person(Hashtable table, char *name)
 {
     int index = hash(name, table.size);
-    while (table.person[index]->name != name)
+    bool found = false;
+    Person *person = NULL;
+    while (!found && (table.person[index] != NULL))
     {
-        index = index+1;
+        Person *p = table.person[index];
+        if(p != NULL && p != REMOVED && strcmp(p->name, name) ==0)
+        {
+            found = true;
+            person = p;
+        }
+        index = (index+1) % table.size;
     }
-    return table.person[index];
+
+    return person;
 }
 
 void remove_person(Hashtable *table, char *name)

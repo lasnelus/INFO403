@@ -1,3 +1,5 @@
+#define REMOVED (Person *)(-1)
+
 typedef struct
 {
     char *name;
