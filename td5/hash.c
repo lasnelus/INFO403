@@ -29,6 +29,7 @@ Person *create_person(char *name, int age, char *email)
     person->age = age;
     person->name = strdup(name);
     person->email = strdup^(email);
+    return person;
 }
 
 
