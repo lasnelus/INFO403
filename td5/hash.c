@@ -28,7 +28,7 @@ Person *create_person(char *name, int age, char *email)
     Person *person = (Person *)malloc(sizeof(Person));
     person->age = age;
     person->name = strdup(name);
-    person->email = strdup^(email);
+    person->email = strdup(email);
     return person;
 }
 
@@ -36,7 +36,7 @@ Person *create_person(char *name, int age, char *email)
 void add_person(Hashtable *table, char *name, int age, char *email)
 {
     int index = hash(name, table->size);
-    Person *person = init_person(name, age, email);
+    Person *person = create_person(name, age, email);
     table->person[index] = person;
 }
 
