@@ -41,11 +41,16 @@ void add_person(Hashtable *table, char *name, int age, char *email)
 }
 
 
-Person find_person(Hashtable table, char *name)
+Person *find_person(Hashtable table, char *name)
 {
     int index = hash(name, table.size);
-    Person *person = table.person[index];
-    return *person;
+    return table.person[index];
+}
+
+void remove_person(Hashtable *table, char *name)
+{
+    int index = hash(name, table.size);
+    table->person[index] = NULL;
 }
 
 // bool placed = false;
