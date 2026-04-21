@@ -27,8 +27,8 @@ Person *create_person(char *name, int age, char *email)
 {
     Person *person = (Person *)malloc(sizeof(Person));
     person->age = age;
-    person->name = strcmp(name);
-    person->email = strcmp(email);
+    person->name = strdup(name);
+    person->email = strdup(email);
     return person;
 }
 
@@ -37,13 +37,28 @@ void add_person(Hashtable *table, char *name, int age, char *email)
 {
     int index = hash(name, table->size);
     Person *person = create_person(name, age, email);
-    table->person[index] = person;
+    bool placed = false;
+    while(!placed)
+    {
+        if (table.person[index] = NULL)
+        {
+            placed = true;
+            table->person[index] = person;
+        }else
+        {
+            index = (index + 1)%table.size;
+        }
+    }
 }
 
 
 Person *find_person(Hashtable table, char *name)
 {
     int index = hash(name, table.size);
+    while (table.person[index].name != name)
+    {
+        index = index+1;
+    }
     return table.person[index];
 }
 
@@ -78,15 +93,3 @@ void free_hashtable(Hashtable *table)
     free(table->person);
 }
 
-// bool placed = false;
-//     while(!placed)
-//     {
-//         if (table.person[hash] = NULL)
-//         {
-//             placed = true;
-//             table->person[hash] = person;
-//         }else
-//         {
-//             hash = (hash + 1)%table.size;
-//         }
-//     }
