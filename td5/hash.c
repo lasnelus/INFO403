@@ -3,9 +3,8 @@ void main (void)
 
 }
 
-hashtable init_hashtable(int size)
+void init_hashtable(int size, Hashtable *table)
 {
-    hashtable table;
     table->size = size;
-    return table;
+    table->person = malloc(size * sizeof(Person *));
 } 

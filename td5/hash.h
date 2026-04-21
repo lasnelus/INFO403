@@ -8,17 +8,17 @@ typedef struct
 
 typedef struct
 {
-    Person** personne;
+    Person **person;
     int size;
 } Hashtable;
 
 
-Hashtable init_hashtable(int size);
+void init_hashtable(int size, Hashtable *table);
 
-void add_person(Hashtable *table, Person personne);
+void add_person(Hashtable *table, Person person);
 
-void find_person(Hashtable table, Person personne);
+void find_person(Hashtable table, Person person);
 
-void remove_person(Hashtable *table, Person personne);
+void remove_person(Hashtable *table, Person person);
 
 void free_hashtable(Hashtable *table);
