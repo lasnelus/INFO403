@@ -23,6 +23,6 @@ void add_person(Hashtable *table, char *name, int age, char *email);
 
 Person *find_person(Hashtable table, char *name);
 
-void remove_person(Hashtable *table, Person person);
+void remove_person(Hashtable *table, char *name);
 
 void free_hashtable(Hashtable *table);

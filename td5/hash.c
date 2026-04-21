@@ -49,7 +49,7 @@ Person *find_person(Hashtable table, char *name)
 
 void remove_person(Hashtable *table, char *name)
 {
-    int index = hash(name, table.size);
+    int index = hash(name, table->size);
     table->person[index] = NULL;
 }
 
