@@ -1,6 +1,7 @@
 #include "annuaire.h"
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 
 void main(void)
@@ -18,11 +19,11 @@ void main(void)
     strcpy(contacte2.mail, "malabretienne@gmail.com");
 
 
-    ListeContacte2 liste2;
+    Liste_Contacte liste2 = malloc(sizeof(struct liste_contacte));
     liste2->contacte = contacte2;
     liste2->suiv = NULL;
-    Liste_Contacte1 liste1;
-    liste1->contacte = contacte1;
+    Liste_Contacte liste1 = malloc(sizeof(struct liste_contacte));
+    liste1->contacte = contacte;
     liste1->suiv = liste2;
 
     afficher_contacte_liste_contacte(liste1);
