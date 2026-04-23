@@ -6,8 +6,7 @@
 
 void main(void)
 {
-    Annuaire annuaire;  // initialise tout à NULL
-
+    Annuaire annuaire;
 
     // Contacte contacte = init_contacte("etienne", "malabre", "0699858666", "malabretienne@gmail.com");
 
@@ -16,7 +15,7 @@ void main(void)
     // ajouter_contacte_annuaire(&annuaire, contacte);
     // ajouter_contacte_annuaire(&annuaire, contacte2);
 
-    charger_annuaire(annuaire, "sauvegarde.txt");
+    charger_annuaire(&annuaire, "sauvegarde.txt");
     lister_contacte_annuaire(annuaire);
     // sauvegarder_annuaire(annuaire, "sauvegarde.txt");
 }
