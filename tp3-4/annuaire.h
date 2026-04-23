@@ -1,7 +1,7 @@
 #define SIZE 100
 #define NOM_MAX_LENGTH 50
 #define PRENOM_MAX_LENGTH 50
-#define TEL_LENGTH 10
+#define TEL_LENGTH 15 //le ptn de \0
 #define MAIL_MAX_LENGTH 120
 
 
