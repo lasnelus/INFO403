@@ -6,7 +6,7 @@
 
 void main(void)
 {
-    Annuaire annuaire;
+    Annuaire annuaire = {0};  // initialise tout à NULL
 
 
     Contacte contacte;
