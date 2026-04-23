@@ -1,5 +1,6 @@
 #include "annuaire.h"
 #include <string.h>
+#include <stdio.h>
 
 
 void main(void)
