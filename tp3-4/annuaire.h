@@ -26,8 +26,6 @@ int hash(char *name, char *first_name);
 
 Liste_Contacte init_liste_contacte(Contacte contacte);
 
-Annuaire init_annuaire(void);
-
 void ajouter_contacte_liste_contacte(Liste_Contacte *liste_contacte, Contacte contacte);
 
 void ajouter_contacte_annuaire(Annuaire *annuaire, Contacte contacte);
@@ -50,6 +48,6 @@ void sauvegarder_annuaire(Annuaire annuaire, char *chemin_sauvegarde);
 
 Annuaire charger_annuaire(char *chemin_charge);
 
-Annuaire init_annuaire(void);
+void init_annuaire(Annuaire annuaire);
 
-Contact init_contacte(char *nom, char* prenom, char *tel, char *mail);
+Contacte init_contacte(char *nom, char* prenom, char *tel, char *mail);

@@ -133,7 +133,8 @@ Annuaire charger_annuaire(char *chemin_charge)
         exit(EXIT_FAILURE);
     }
 
-    Annuaire annuaire = init_annuaire();
+    Annuaire annuaire;
+    init_annuaire(annuaire);
     char nom[NOM_MAX_LENGTH];
     char prenom[PRENOM_MAX_LENGTH];
     char tel[TEL_LENGTH];
@@ -151,15 +152,12 @@ Annuaire charger_annuaire(char *chemin_charge)
 
 // INIT
 
-Annuaire init_annuaire(void)
+void init_annuaire(Annuaire annuaire)
 {
-    Annuaire annuaire;
     for (int i = 0; i < SIZE; i++)
     {
         annuaire[i] = NULL;
     }
-
-    return annuaire;
 }
 
 Contacte init_contacte(char *nom, char* prenom, char *tel, char *mail) // TODO des free ?
