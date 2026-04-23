@@ -5,11 +5,11 @@
 
 void main(void)
 {
-    Contacte *contacte;
-    contacte->nom = "etienne";
-    contacte->prenom = "malabre";
-    contacte->tel = "0699858666";
-    contacte->mail = "malabretienne@gmail.com";
+    Contacte contacte;
+    contacte.nom = "etienne";
+    contacte.prenom = "malabre";
+    contacte.tel = "0699858666";
+    contacte.mail = "malabretienne@gmail.com";
 
     afficher_contacte(contacte);
 }
