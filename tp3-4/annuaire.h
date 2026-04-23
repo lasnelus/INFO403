@@ -24,6 +24,10 @@ typedef Liste_Contacte Annuaire[SIZE];
 
 int hash(char *name, char *first_name);
 
+Liste_Contacte init_liste_contacte(Contacte contacte);
+
+Annuaire init_annuaire(void);
+
 void ajouter_contacte_liste_contacte(Liste_Contacte *liste_contacte, Contacte contacte);
 
 void ajouter_contacte_annuaire(Annuaire *annuaire, Contacte contacte);
@@ -42,4 +46,10 @@ Contacte rechercher_contacte_nom_annuaire(Annuaire annuaire, char nom[NOM_MAX_LE
 
 void fusionner_annuaire(Annuaire *annuaire_receveur, Annuaire annuaire_donneur);
 
-void sauvegarder_annuaire(Annuaire annuaire);
+void sauvegarder_annuaire(Annuaire annuaire, char *chemin_sauvegarde);
+
+Annuaire charger_annuaire(char *chemin_charge);
+
+Annuaire init_annuaire(void);
+
+Contact init_contacte(char *nom, char* prenom, char *tel, char *mail);

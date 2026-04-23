@@ -25,7 +25,7 @@ void main(void)
     ajouter_contacte_annuaire(&annuaire, contacte2);
 
     lister_contacte_annuaire(annuaire);
-    sauvegarder_annuaire(annuaire);
+    sauvegarder_annuaire(annuaire, "sauvegarde.txt");
 }
 
 
@@ -101,9 +101,9 @@ void ajouter_contacte_annuaire(Annuaire *annuaire, Contacte contacte)
 
 // SYSTEME SAUVEGARDE FICHIER
 
-void sauvegarder_annuaire(Annuaire annuaire)
+void sauvegarder_annuaire(Annuaire annuaire, char *chemin_sauvegarde)
 {
-    FILE* f = fopen(CHEMIN_SAUVEGARDE, "w");
+    FILE* f = fopen(chemin_sauvegarde, "w");
     if(f != NULL)
     {
         for(int i = 0; i < SIZE; i++)
@@ -119,4 +119,56 @@ void sauvegarder_annuaire(Annuaire annuaire)
         printf("Erreur lors de la sauvegarde !\n");
     }
     fclose(f);
+}
+
+
+// SYSTEME CHARGE FICHIER
+
+Annuaire charger_annuaire(char *chemin_charge)
+{
+    FILE* f = fopen(chemin_charge, "r");
+    if(f == NULL)
+    {
+        perror("Fichier non ouvert");
+        exit(EXIT_FAILURE);
+    }
+
+    Annuaire annuaire = init_annuaire();
+    char nom[NOM_MAX_LENGTH];
+    char prenom[PRENOM_MAX_LENGTH];
+    char tel[TEL_LENGTH];
+    char mail[MAIL_MAX_LENGTH];
+
+    int nbElts = fscanf(fichier, "%[^,],%[^,],%[^,],%[^,]\n", nom, prenom, tel, mail);
+    while (nbElts == 4)
+    {
+        ajouter_contacte_annuaire(&annuaire, init_contacte(nom, prenom, tel, mail));
+        nbElts = fscanf(fichier, "%[^,],%[^,],%[^,],%[^,]\n", nom, prenom, tel, mail);
+    }
+    
+    return annuaire
+}
+
+// INIT
+
+Annuaire init_annuaire(void)
+{
+    Annuaire annuaire;
+    for (int i = 0; i < SIZE; i++)
+    {
+        annuaire[i] = NULL;
+    }
+    
+    return annuaire;
+}
+
+Contact init_contacte(char *nom, char* prenom, char *tel, char *mail) // TODO des free ?
+{
+    Contacte c;
+    strcpy(c.nom, nom);
+    strcpy(c.prenom, prenom);
+    strcpy(c.tel, tel);
+    strcpy(c.mail, mail);
+
+    return c;
 }
