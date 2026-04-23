@@ -25,6 +25,7 @@ void main(void)
     ajouter_contacte_annuaire(&annuaire, contacte2);
 
     lister_contacte_annuaire(annuaire);
+    sauvegarder_annuaire(annuaire);
 }
 
 
@@ -108,7 +109,7 @@ void sauvegarder_annuaire(Annuaire annuaire)
         for(int i = 0; i < SIZE; i++)
         {
             while(annuaire[i] != NULL)
-                fprintf(f, "%s %s %s %s", annnuaire[i]->nom, annnuaire[i]->prenom, annnuaire[i]->tel, annnuaire[i]->mail);
+                fprintf(f, "%s %s %s %s", annuaire[i]->nom, annuaire[i]->prenom, annuaire[i]->tel, annuaire[i]->mail);
                 annuaire[i] = annuaire[i]->suiv;
             }
         printf("Partie sauvegardée avec succès !\n");
