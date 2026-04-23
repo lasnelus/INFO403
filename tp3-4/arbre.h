@@ -1,5 +1,5 @@
-typedef struct noeud {
-    Contacte contacte;
-    struct noeud *gauche;
-    struct noeud *droite;
-} Noeud;
+// typedef struct noeud {
+//     Contacte contacte;
+//     struct noeud *gauche;
+//     struct noeud *droite;
+// } Noeud;
