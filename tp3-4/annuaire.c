@@ -110,7 +110,7 @@ void sauvegarder_annuaire(Annuaire annuaire)
         {
             while(annuaire[i] != NULL)
             {
-                fprintf(f, "%s %s %s %s", annuaire[i]->contacte.nom, annuaire[i]->contacte.prenom, annuaire[i]->contacte.tel, annuaire[i]->contacte.mail);
+                fprintf(f, "%s %s %s %s\n", annuaire[i]->contacte.nom, annuaire[i]->contacte.prenom, annuaire[i]->contacte.tel, annuaire[i]->contacte.mail);
                 annuaire[i] = annuaire[i]->suiv;
             }
         }
