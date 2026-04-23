@@ -19,7 +19,7 @@ typedef struct liste_contacte {
 } *Liste_Contacte;
 
 
-typedef Liste_Contacte HashTable[SIZE];
+typedef Liste_Contacte Annuaire[SIZE];
 
 
 int hash(char *name, char *first_name);
