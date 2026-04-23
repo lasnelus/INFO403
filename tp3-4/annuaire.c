@@ -27,6 +27,7 @@ void main(void)
     liste1->suiv = liste2;
 
     afficher_contacte_liste_contacte(liste1);
+    ajouter_contacte_annuaire(contacte);
 }
 
 
@@ -67,4 +68,13 @@ void afficher_contacte(Contacte contacte)
     printf("tel: %s\n", contacte.tel);
     printf("nom: %s\n", contacte.nom);
     printf("mail: %s\n", contacte.mail);
+}
+
+
+// SYSTEME D'AJOUT A L'ANNUAIRE
+
+void ajouter_contacte_annuaire(Annuaire *annuaire, Contacte contacte)
+{
+    int hash = hash(contacte.nom, contacte.prenom);
+    printf("%d", hash);
 }
