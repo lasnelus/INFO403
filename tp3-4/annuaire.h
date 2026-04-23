@@ -30,7 +30,7 @@ void lister_contacte_annuaire(Annuaire annuaire);
 
 void supprimer_contacte_annuaire(Annuaire *annuaire, Contacte contacte);
 
-Contacte rechercher_contacte_nom_annuaire(Annuaire annuaire, char[NOM_MAX_LENGTH] nom);
+Contacte rechercher_contacte_nom_annuaire(Annuaire annuaire, char nom[NOM_MAX_LENGTH]);
 
 //extraire wtf
 
