@@ -132,13 +132,13 @@ void charger_annuaire(Annuaire *annuaire, char *chemin_charge)
 
     init_annuaire(annuaire);
 
-    int nbElts = fscanf(f, "%[^] %[^] %[^] %[^]\n", nom, prenom, tel, mail);
+    int nbElts = fscanf(f, "%[^], %[^], %[^], %[^]\n", nom, prenom, tel, mail);
     while (nbElts == 4)
     {
         printf("bonjour");
         ajouter_contacte_annuaire(annuaire, init_contacte(nom, prenom, tel, mail));
         
-        nbElts = fscanf(f, "%[^] %[^] %[^] %[^]\n", nom, prenom, tel, mail);
+        nbElts = fscanf(f, "%[^], %[^], %[^], %[^]\n", nom, prenom, tel, mail);
     }
     
     fclose(f);
