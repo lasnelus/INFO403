@@ -94,5 +94,5 @@ void ajouter_contacte_liste_contacte(Liste_Contacte *liste_contacte, Contacte co
 void ajouter_contacte_annuaire(Annuaire *annuaire, Contacte contacte)
 {
     int index = hash(contacte.nom, contacte.prenom);
-    ajouter_contacte_liste_contacte(&annuaire[index], contacte);
+    ajouter_contacte_liste_contacte(annuaire[index], contacte);
 }
