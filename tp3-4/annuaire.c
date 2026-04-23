@@ -6,10 +6,10 @@
 void main(void)
 {
     Contacte contacte;
-    contacte.nom = "etienne";
-    contacte.prenom = "malabre";
-    contacte.tel = "0699858666";
-    contacte.mail = "malabretienne@gmail.com";
+    strcpy(contacte.nom, "etienne");
+    strcpy(contacte.prenom, "malabre");
+    strcpy(contacte.tel, "0699858666");
+    strcpy(contacte.mail, "malabretienne@gmail.com");
 
     afficher_contacte(contacte);
 }
