@@ -6,6 +6,9 @@
 
 void main(void)
 {
+    Annuaire annuaire;
+
+
     Contacte contacte;
     strcpy(contacte.nom, "etienne");
     strcpy(contacte.prenom, "malabre");
@@ -27,7 +30,7 @@ void main(void)
     liste1->suiv = liste2;
 
     afficher_contacte_liste_contacte(liste1);
-    ajouter_contacte_annuaire(contacte);
+    ajouter_contacte_annuaire(annuaire, contacte);
 }
 
 
