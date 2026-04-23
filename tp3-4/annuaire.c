@@ -9,15 +9,16 @@ void main(void)
     Annuaire annuaire;  // initialise tout à NULL
 
 
-    Contacte contacte = init_contacte("etienne", "malabre", "0699858666", "malabretienne@gmail.com");
+    // Contacte contacte = init_contacte("etienne", "malabre", "0699858666", "malabretienne@gmail.com");
 
-    Contacte contacte2 = init_contacte("eddy", "guyon", "0627523669", "eddy.guyon@cmi-info.fr");
+    // Contacte contacte2 = init_contacte("eddy", "guyon", "0627523669", "eddy.guyon@cmi-info.fr");
 
-    ajouter_contacte_annuaire(&annuaire, contacte);
-    ajouter_contacte_annuaire(&annuaire, contacte2);
+    // ajouter_contacte_annuaire(&annuaire, contacte);
+    // ajouter_contacte_annuaire(&annuaire, contacte2);
 
+    charger_annuaire(&annuaire, "sauvegarde.txt");
     lister_contacte_annuaire(annuaire);
-    sauvegarder_annuaire(annuaire, "sauvegarde.txt");
+    // sauvegarder_annuaire(annuaire, "sauvegarde.txt");
 }
 
 
