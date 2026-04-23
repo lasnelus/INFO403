@@ -16,7 +16,7 @@ void main(void)
     // ajouter_contacte_annuaire(&annuaire, contacte);
     // ajouter_contacte_annuaire(&annuaire, contacte2);
 
-    charger_annuaire(&annuaire, "sauvegarde.txt");
+    charger_annuaire(annuaire, "sauvegarde.txt");
     lister_contacte_annuaire(annuaire);
     // sauvegarder_annuaire(annuaire, "sauvegarde.txt");
 }
