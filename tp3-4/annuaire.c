@@ -74,7 +74,7 @@ void ajouter_contacte_liste_contacte(Liste_Contacte *liste_contacte, Contacte co
 {
     if (*liste_contacte == NULL)
     {
-        *liste_contacte = malloc(sizeof(**Liste_Contacte));
+        *liste_contacte = malloc(sizeof(**liste_contacte));
         (*liste_contacte)->contacte = contacte;
         (*liste_contacte)->suiv = NULL;
     }
@@ -85,14 +85,14 @@ void ajouter_contacte_liste_contacte(Liste_Contacte *liste_contacte, Contacte co
         {
             temp = temp->suiv;
         }
-        temp->suiv = malloc(sizeof(**Liste_Contacte));
+        temp->suiv = malloc(sizeof(**liste_contacte));
         temp->suiv->contacte = contacte;
         temp->suiv->suiv = NULL;
-}
+    }
 }
 
 void ajouter_contacte_annuaire(Annuaire *annuaire, Contacte contacte)
 {
     int index = hash(contacte.nom, contacte.prenom);
-    ajouter_contacte_liste_contacte(&(*annuaire[index]), contacte);
+    ajouter_contacte_liste_contacte(&(*annuaire)[index], contacte);
 }
