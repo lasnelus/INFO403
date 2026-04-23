@@ -13,10 +13,10 @@ void main(void)
     strcpy(contacte.mail, "malabretienne@gmail.com");
 
     Contacte contacte2;
-    strcpy(contacte2.nom, "etienne");
-    strcpy(contacte2.prenom, "malabre");
-    strcpy(contacte2.tel, "0699858666");
-    strcpy(contacte2.mail, "malabretienne@gmail.com");
+    strcpy(contacte2.nom, "eddy");
+    strcpy(contacte2.prenom, "guyon");
+    strcpy(contacte2.tel, "0627523669");
+    strcpy(contacte2.mail, "eddy.guyon@cmi-info.fr");
 
 
     Liste_Contacte liste2 = malloc(sizeof(struct liste_contacte));
