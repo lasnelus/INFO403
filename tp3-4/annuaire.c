@@ -43,20 +43,18 @@ int hash(char *nom, char *prenom) {
 
 void afficher_contacte_liste_contacte(Liste_Contacte liste_contacte)
 {
-    Contacte contacte = liste_contacte->contacte;
-    while (contacte != NULL)
+    while (liste_contacte != NULL)
     {
-       afficher_contacte(contacte);
-       printf("\n");
-       contacte = liste_contacte->suiv;
+        afficher_contacte(liste_contacte->contacte);
+        printf("\n");
+        liste_contacte = liste_contacte->suiv;
     }
-    
 }
 
 void afficher_contacte(Contacte contacte)
 {
-    printf("nom: %s\n", contacte.nom);
     printf("prenom: %s\n", contacte.prenom);
     printf("tel: %s\n", contacte.tel);
+    printf("nom: %s\n", contacte.nom);
     printf("mail: %s\n", contacte.mail);
 }
