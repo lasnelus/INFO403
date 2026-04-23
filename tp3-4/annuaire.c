@@ -96,3 +96,24 @@ void ajouter_contacte_annuaire(Annuaire *annuaire, Contacte contacte)
     int index = hash(contacte.nom, contacte.prenom);
     ajouter_contacte_liste_contacte(&(*annuaire)[index], contacte);
 }
+
+
+// SYSTEME SAUVEGARDE FICHIER
+
+void sauvegarder_annuaire(Annuaire annuaire)
+{
+    FILE* f = fopen(CHEMIN_SAUVEGARDE, "w");
+    if(f != NULL)
+    {
+        for(int i = 0; i < SIZE; i++)
+        {
+            while(annuaire[i] != NULL)
+                fprintf(f, "%s %s %s %s", annnuaire[i]->nom, annnuaire[i]->prenom, annnuaire[i]->tel, annnuaire[i]->mail);
+                annuaire[i] = annuaire[i]->suiv;
+            }
+        printf("Partie sauvegardée avec succès !\n");
+    } else {
+        printf("Erreur lors de la sauvegarde !\n");
+    }
+    fclose(f);
+}

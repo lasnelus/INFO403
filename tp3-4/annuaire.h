@@ -3,7 +3,7 @@
 #define PRENOM_MAX_LENGTH 50
 #define TEL_LENGTH 15 //le ptn de \0
 #define MAIL_MAX_LENGTH 120
-
+#define CHEMIN_SAUVEGARDE "sauvegarde.txt"
 
 
 typedef struct {
@@ -41,3 +41,5 @@ Contacte rechercher_contacte_nom_annuaire(Annuaire annuaire, char nom[NOM_MAX_LE
 //extraire wtf
 
 void fusionner_annuaire(Annuaire *annuaire_receveur, Annuaire annuaire_donneur);
+
+void sauvegarder_annuaire(Annuaire annuaire);
