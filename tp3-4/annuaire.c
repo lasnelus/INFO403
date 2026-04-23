@@ -139,14 +139,14 @@ Annuaire charger_annuaire(char *chemin_charge)
     char tel[TEL_LENGTH];
     char mail[MAIL_MAX_LENGTH];
 
-    int nbElts = fscanf(fichier, "%[^,],%[^,],%[^,],%[^,]\n", nom, prenom, tel, mail);
+    int nbElts = fscanf(f, "%[^,],%[^,],%[^,],%[^,]\n", nom, prenom, tel, mail);
     while (nbElts == 4)
     {
         ajouter_contacte_annuaire(&annuaire, init_contacte(nom, prenom, tel, mail));
-        nbElts = fscanf(fichier, "%[^,],%[^,],%[^,],%[^,]\n", nom, prenom, tel, mail);
+        nbElts = fscanf(f, "%[^,],%[^,],%[^,],%[^,]\n", nom, prenom, tel, mail);
     }
     
-    return annuaire
+    return annuaire;
 }
 
 // INIT
@@ -158,11 +158,11 @@ Annuaire init_annuaire(void)
     {
         annuaire[i] = NULL;
     }
-    
+
     return annuaire;
 }
 
-Contact init_contacte(char *nom, char* prenom, char *tel, char *mail) // TODO des free ?
+Contacte init_contacte(char *nom, char* prenom, char *tel, char *mail) // TODO des free ?
 {
     Contacte c;
     strcpy(c.nom, nom);
