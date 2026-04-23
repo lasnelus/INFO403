@@ -21,16 +21,10 @@ void main(void)
     strcpy(contacte2.tel, "0627523669");
     strcpy(contacte2.mail, "eddy.guyon@cmi-info.fr");
 
-
-    Liste_Contacte liste2 = malloc(sizeof(struct liste_contacte));
-    liste2->contacte = contacte2;
-    liste2->suiv = NULL;
-    Liste_Contacte liste1 = malloc(sizeof(struct liste_contacte));
-    liste1->contacte = contacte;
-    liste1->suiv = liste2;
-
-    afficher_contacte_liste_contacte(liste1);
     ajouter_contacte_annuaire(&annuaire, contacte);
+    ajouter_contacte_annuaire(&annuaire, contacte2);
+
+    lister_contacte_annuaire(annuaire);
 }
 
 
@@ -76,8 +70,29 @@ void afficher_contacte(Contacte contacte)
 
 // SYSTEME D'AJOUT A L'ANNUAIRE
 
+void ajouter_contacte_liste_contacte(Liste_Contacte *liste_contacte, Contacte contacte)
+{
+    if (*liste_contacte == NULL)
+    {
+        *liste_contacte = malloc(sizeof(Liste_Contacte));
+        (*liste_contacte)->contacte = contacte;
+        (*liste_contacte)->suiv = NULL;
+    }
+    else
+    {
+        Liste_Contacte temp = *liste_contacte;
+        while (temp->suiv != NULL)
+        {
+            temp = temp->suiv;
+        }
+        temp->suiv = malloc(sizeof(Liste_Contacte));
+        temp->suiv->contacte = contacte;
+        temp->suiv->suiv = NULL;
+}
+}
+
 void ajouter_contacte_annuaire(Annuaire *annuaire, Contacte contacte)
 {
     int index = hash(contacte.nom, contacte.prenom);
-    printf("%d", index);
+    ajouter_contacte_liste_contacte(&annuaire[index], contacte);
 }

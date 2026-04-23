@@ -24,6 +24,8 @@ typedef Liste_Contacte Annuaire[SIZE];
 
 int hash(char *name, char *first_name);
 
+void ajouter_contacte_liste_contacte(Liste_Contacte *liste_contacte, Contacte contacte);
+
 void ajouter_contacte_annuaire(Annuaire *annuaire, Contacte contacte);
 
 void afficher_contacte(Contacte contacte);
