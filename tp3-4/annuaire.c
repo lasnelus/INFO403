@@ -124,7 +124,7 @@ void sauvegarder_annuaire(Annuaire annuaire, char *chemin_sauvegarde)
 
 // SYSTEME CHARGE FICHIER
 
-Annuaire charger_annuaire(char *chemin_charge)
+void charger_annuaire(Annuaire *annuaire, char *chemin_charge)
 {
     FILE* f = fopen(chemin_charge, "r");
     if(f == NULL)
@@ -133,12 +133,12 @@ Annuaire charger_annuaire(char *chemin_charge)
         exit(EXIT_FAILURE);
     }
 
-    Annuaire annuaire;
-    init_annuaire(annuaire);
     char nom[NOM_MAX_LENGTH];
     char prenom[PRENOM_MAX_LENGTH];
     char tel[TEL_LENGTH];
     char mail[MAIL_MAX_LENGTH];
+
+    init_annuaire(annuaire);
 
     int nbElts = fscanf(f, "%[^,],%[^,],%[^,],%[^,]\n", nom, prenom, tel, mail);
     while (nbElts == 4)
@@ -147,12 +147,12 @@ Annuaire charger_annuaire(char *chemin_charge)
         nbElts = fscanf(f, "%[^,],%[^,],%[^,],%[^,]\n", nom, prenom, tel, mail);
     }
     
-    return annuaire;
+    fclose(f);
 }
 
 // INIT
 
-void init_annuaire(Annuaire annuaire)
+void init_annuaire(Annuaire *annuaire)
 {
     for (int i = 0; i < SIZE; i++)
     {

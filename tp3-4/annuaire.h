@@ -46,8 +46,8 @@ void fusionner_annuaire(Annuaire *annuaire_receveur, Annuaire annuaire_donneur);
 
 void sauvegarder_annuaire(Annuaire annuaire, char *chemin_sauvegarde);
 
-Annuaire charger_annuaire(char *chemin_charge);
+void charger_annuaire(Annuaire *annuaire, char *chemin_charge);
 
-void init_annuaire(Annuaire annuaire);
+void init_annuaire(Annuaire *annuaire);
 
 Contacte init_contacte(char *nom, char* prenom, char *tel, char *mail);
