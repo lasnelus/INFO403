@@ -41,6 +41,16 @@ int hash(char *nom, char *prenom) {
     return hash % SIZE;
 }
 
+// AFFICHAGE DE L'ANNUAIRE
+
+void lister_contacte_annuaire(Annuaire annuaire)
+{
+    for(int i = 0; i<SIZE; i++)
+    {
+        afficher_contacte_liste_contacte(annuaire[i]);
+    }
+}
+
 void afficher_contacte_liste_contacte(Liste_Contacte liste_contacte)
 {
     while (liste_contacte != NULL)
