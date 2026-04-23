@@ -156,7 +156,7 @@ void init_annuaire(Annuaire *annuaire)
 {
     for (int i = 0; i < SIZE; i++)
     {
-        annuaire[i] = NULL;
+        (*annuaire)[i] = NULL;
     }
 }
 
