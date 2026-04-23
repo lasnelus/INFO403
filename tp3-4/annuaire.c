@@ -6,20 +6,12 @@
 
 void main(void)
 {
-    Annuaire annuaire = {0};  // initialise tout à NULL
+    Annuaire annuaire;  // initialise tout à NULL
 
 
-    Contacte contacte;
-    strcpy(contacte.nom, "etienne");
-    strcpy(contacte.prenom, "malabre");
-    strcpy(contacte.tel, "0699858666");
-    strcpy(contacte.mail, "malabretienne@gmail.com");
+    Contacte contacte = init_contacte("etienne", "malabre", "0699858666", "malabretienne@gmail.com");
 
-    Contacte contacte2;
-    strcpy(contacte2.nom, "eddy");
-    strcpy(contacte2.prenom, "guyon");
-    strcpy(contacte2.tel, "0627523669");
-    strcpy(contacte2.mail, "eddy.guyon@cmi-info.fr");
+    Contacte contacte2 = init_contacte("eddy", "guyon", "0627523669", "eddy.guyon@cmi-info.fr");
 
     ajouter_contacte_annuaire(&annuaire, contacte);
     ajouter_contacte_annuaire(&annuaire, contacte2);
