@@ -28,6 +28,8 @@ void ajouter_contacte_annuaire(Annuaire *annuaire, Contacte contacte);
 
 void afficher_contacte(Contacte contacte);
 
+void afficher_contacte_liste_contacte(Liste_Contacte liste_contacte);
+
 void lister_contacte_annuaire(Annuaire annuaire);
 
 void supprimer_contacte_annuaire(Annuaire *annuaire, Contacte contacte);

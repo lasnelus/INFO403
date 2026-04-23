@@ -11,7 +11,21 @@ void main(void)
     strcpy(contacte.tel, "0699858666");
     strcpy(contacte.mail, "malabretienne@gmail.com");
 
-    afficher_contacte(contacte);
+    Contacte contacte2;
+    strcpy(contacte2.nom, "etienne");
+    strcpy(contacte2.prenom, "malabre");
+    strcpy(contacte2.tel, "0699858666");
+    strcpy(contacte2.mail, "malabretienne@gmail.com");
+
+
+    ListeContacte2 liste2;
+    liste2->contacte = contacte2;
+    liste2->suiv = NULL;
+    Liste_Contacte1 liste1;
+    liste1->contacte = contacte1;
+    liste1->suiv = liste2;
+
+    afficher_contacte_liste_contacte(liste1);
 }
 
 
@@ -24,6 +38,18 @@ int hash(char *nom, char *prenom) {
         hash += prenom[i];
     }
     return hash % SIZE;
+}
+
+void afficher_contacte_liste_contacte(Liste_Contacte liste_contacte)
+{
+    Contacte contacte = liste_contacte->contacte;
+    while (contacte != NULL)
+    {
+       afficher_contacte(contacte);
+       printf("\n");
+       contacte = liste_contacte->suiv;
+    }
+    
 }
 
 void afficher_contacte(Contacte contacte)
