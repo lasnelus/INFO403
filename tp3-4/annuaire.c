@@ -27,6 +27,19 @@ int main(int argc, char *argv[])
         charger_annuaire(&annuaire, argv[2]);
         lister_contacte_annuaire(annuaire);
     }
+    else if (strcmp(argv[1], "-a") == 0) {
+        if (argc != 7) {
+            printf("Usage: ./annuaire -a nom prenom tel mail fichier\n");
+            return 1;
+        }
+
+        charger_annuaire(&annuaire, argv[6]);
+
+        Contacte c = init_contacte(argv[2], argv[3], argv[4], argv[5]);
+        ajouter_contacte_annuaire(&annuaire, c);
+
+        sauvegarder_annuaire(annuaire, argv[6]);
+    }
 
 
     // Contacte contacte = init_contacte("etienne", "malabre", "0699858666", "malabretienne@gmail.com");
