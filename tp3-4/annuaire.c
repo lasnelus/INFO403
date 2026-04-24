@@ -40,6 +40,21 @@ int main(int argc, char *argv[])
 
         sauvegarder_annuaire(annuaire, argv[6]);
     }
+    else if (strcmp(argv[1], "-f") == 0){
+    if (argc != 4) {
+        printf("Usage: ./annuaire -f fichier1 fichier2\n");
+        return 1;
+    }
+
+    Annuaire a1, a2;
+
+    charger_annuaire(&a1, argv[2]);
+    charger_annuaire(&a2, argv[3]);
+
+    fusionner_annuaires(&a1, a2);
+
+    sauvegarder_annuaire(a1, argv[2]);
+    }  
     else {
         printf("Option inconnue. Utilise -h pour l'aide.\n");
     }
@@ -126,6 +141,22 @@ void ajouter_contacte_annuaire(Annuaire *annuaire, Contacte contacte)
 {
     int index = hash(contacte.nom, contacte.prenom);
     ajouter_contacte_liste_contacte(&(*annuaire)[index], contacte);
+}
+
+//SYSTEME FUSION ANNUAIRE
+
+void fusionner_annuaire(Annuaire *annuaire_receveur, Annuaire annuaire_donneur)
+{
+    for (int i = 0; i < SIZE; i++)
+    {
+        Liste_Contacte temp = annuaire_donneur[i];
+
+        while (temp != NULL)
+        {
+            ajouter_contacte_annuaire(a1, temp->contacte);
+            temp = temp->suiv;
+        }
+    }
 }
 
 
