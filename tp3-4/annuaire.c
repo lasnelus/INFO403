@@ -40,18 +40,6 @@ int main(int argc, char *argv[])
 
         sauvegarder_annuaire(annuaire, argv[6]);
     }
-
-
-    // Contacte contacte = init_contacte("etienne", "malabre", "0699858666", "malabretienne@gmail.com");
-
-    // Contacte contacte2 = init_contacte("eddy", "guyon", "0627523669", "eddy.guyon@cmi-info.fr");
-
-    // ajouter_contacte_annuaire(&annuaire, contacte);
-    // ajouter_contacte_annuaire(&annuaire, contacte2);
-
-    // charger_annuaire(&annuaire, "sauvegarde.txt");
-    // lister_contacte_annuaire(annuaire);
-    // sauvegarder_annuaire(annuaire, "sauvegarde.txt");
     else {
         printf("Option inconnue. Utilise -h pour l'aide.\n");
     }
@@ -104,9 +92,9 @@ void afficher_contacte_liste_contacte(Liste_Contacte liste_contacte)
 
 void afficher_contacte(Contacte contacte)
 {
+    printf("nom: %s\n", contacte.nom);
     printf("prenom: %s\n", contacte.prenom);
     printf("tel: %s\n", contacte.tel);
-    printf("nom: %s\n", contacte.nom);
     printf("mail: %s\n", contacte.mail);
 }
 
@@ -156,7 +144,7 @@ void sauvegarder_annuaire(Annuaire annuaire, char *chemin_sauvegarde)
                 annuaire[i] = annuaire[i]->suiv;
             }
         }
-        printf("Partie sauvegardée avec succès !\n");
+        printf("Annuaire sauvegardée avec succès !\n");
     } else {
         printf("Erreur lors de la sauvegarde !\n");
     }
@@ -185,7 +173,6 @@ void charger_annuaire(Annuaire *annuaire, char *chemin_charge)
     int nbElts = fscanf(f, "%s %s %s %s\n", nom, prenom, tel, mail);
     while (nbElts == 4)
     {
-        printf("bonjour");
         ajouter_contacte_annuaire(annuaire, init_contacte(nom, prenom, tel, mail));
         
         nbElts = fscanf(f, "%s %s %s %s\n", nom, prenom, tel, mail);
