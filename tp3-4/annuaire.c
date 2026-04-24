@@ -4,9 +4,30 @@
 #include <stdlib.h>
 
 
-void main(void)
+int main(int argc, char *argv[])
 {
     Annuaire annuaire;
+
+    if (argc < 2) {
+        printf("Utilisation : ./annuaire [option]\n");
+        return 1;
+    }
+
+    if (strcmp(argv[1], "-h") == 0) {
+        affiche_aide();
+        return 1;
+    }
+
+    else if (strcmp(argv[1], "-l") == 0) {
+        if (argc != 3) {
+            printf("Usage: ./annuaire -l fichier\n");
+            return 1;
+        }
+
+        charger_annuaire(&annuaire, argv[2]);
+        lister_contacte_annuaire(annuaire);
+    }
+
 
     // Contacte contacte = init_contacte("etienne", "malabre", "0699858666", "malabretienne@gmail.com");
 
@@ -15,9 +36,14 @@ void main(void)
     // ajouter_contacte_annuaire(&annuaire, contacte);
     // ajouter_contacte_annuaire(&annuaire, contacte2);
 
-    charger_annuaire(&annuaire, "sauvegarde.txt");
-    lister_contacte_annuaire(annuaire);
+    // charger_annuaire(&annuaire, "sauvegarde.txt");
+    // lister_contacte_annuaire(annuaire);
     // sauvegarder_annuaire(annuaire, "sauvegarde.txt");
+    else {
+        printf("Option inconnue. Utilise -h pour l'aide.\n");
+    }
+
+    return 0;
 }
 
 
