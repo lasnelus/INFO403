@@ -46,6 +46,17 @@ int main(int argc, char *argv[])
     return 0;
 }
 
+void affiche_aide(void)
+{
+    printf("Options disponibles :\n");
+    printf("-a nom prenom tel mail fichier : ajouter un contact\n");
+    printf("-l fichier : lister les contacts\n");
+    printf("-r [n|t|m] valeur fichier : rechercher\n");
+    printf("-s nom fichier : supprimer\n");
+    printf("-f fichier1 fichier2 : fusionner\n");
+}
+
+
 
 int hash(char *nom, char *prenom) {
     int hash = 0;
