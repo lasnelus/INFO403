@@ -91,12 +91,12 @@ int main(int argc, char *argv[])
 
 void affiche_aide(void)
 {
+    printf("-f fichier1 fichier2 : fusionner\n");
     printf("Options disponibles :\n");
     printf("-a nom prenom tel mail fichier : ajouter un contact\n");
     printf("-l fichier : lister les contacts\n");
     printf("-r [n|t|m] valeur fichier : rechercher\n");
     printf("-s nom fichier : supprimer\n");
-    printf("-f fichier1 fichier2 : fusionner\n");
 }
 
 
@@ -196,8 +196,9 @@ void affiche_menu_recherche(Annuaire annuaire)
     char valeur[120];
     printf("Sur quel paramètre rechercher ?\n");
     printf("n : nom\n t: n° telephone\n m: mail\n");
-    scanf("%s", param);
-    scanf("à chercher : %s", valeur);
+    scanf("%s\n", param);
+    printf("a chercher : ");
+    scanf("%s", valeur);
     rechercher_contacte_annuaire(annuaire, valeur, param);
 }
 
@@ -205,8 +206,8 @@ void affiche_menu_extraction(Annuaire annuaire)
 {
     char param[7];
     printf("Quel information rechercher ?\n");
-    printf("n: nom\n p: prenom\n t: n° telephone\n m: mail");
-    printf("écrire tout attaché les informations vouluts");
+    printf("n: nom\n p: prenom\n t: n° telephone\n m: mail\n");
+    printf("écrire tout attaché les informations voulues\n");
     scanf("%s", param);
     extraire_contacte_annuaire(annuaire, param);
 }
