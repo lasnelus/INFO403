@@ -150,8 +150,8 @@ void affiche_menu_ajout(Annuaire *annuaire)
 
 void affiche_menu_recherche(Annuaire annuaire)
 {
-    char *param;
-    char *valeur;
+    char param[5];
+    char valeur[120];
     printf("Sur quel paramètre rechercher ?\n");
     printf("n : nom\n t: n° telephone\n m: mail");
     scanf("%s", param);
@@ -161,7 +161,7 @@ void affiche_menu_recherche(Annuaire annuaire)
 
 void affiche_menu_extraction(Annuaire annuaire)
 {
-    char *param;
+    char param[7];
     printf("Quel information rechercher ?\n");
     printf("n: nom\n p: prenom\n t: n° telephone\n m: mail");
     printf("écrire tout attaché les informations vouluts");
@@ -171,7 +171,7 @@ void affiche_menu_extraction(Annuaire annuaire)
 
 void affiche_menu_suppression(Annuaire *annuaire)
 {
-    char *nom;
+    char nom[NOM_MAX_LENGTH];
     scanf("nom du contact à supprimer: %s", nom);
     supprimer_contacte_annuaire(annuaire, nom);
 }
