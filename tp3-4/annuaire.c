@@ -195,7 +195,7 @@ void affiche_menu_recherche(Annuaire annuaire)
     char param[5];
     char valeur[120];
     printf("Sur quel paramètre rechercher ?\n");
-    printf("n : nom\n t: n° telephone\n m: mail");
+    printf("n : nom\n t: n° telephone\n m: mail\n");
     scanf("%s", param);
     scanf("à chercher : %s", valeur);
     rechercher_contacte_annuaire(annuaire, valeur, param);
