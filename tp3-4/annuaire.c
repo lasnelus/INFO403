@@ -245,9 +245,7 @@ void supprimer_contacte_annuaire(Annuaire *annuaire, char *nom)
             temp = temp->suiv;
         }
     }
-
-    if (!trouve)
-        printf("Contact introuvable\n");
+}
 }
 
 //SYSTEME FUSION ANNUAIRE
