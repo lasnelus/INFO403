@@ -44,6 +44,10 @@ void extraire_contacte_annuaire(Annuaire annuaire, char *param);
 
 void fusionner_annuaire(Annuaire *annuaire_receveur, Annuaire annuaire_donneur);
 
+void sauvegarder_annuaire(Annuaire annuaire, char *chemin_sauvegarde);
+
+void charger_annuaire(Annuaire *annuaire, char *chemin_charge);
+
 void init_annuaire(Annuaire *annuaire);
 
 Contacte init_contacte(char *nom, char* prenom, char *tel, char *mail);
