@@ -115,6 +115,14 @@ int hash(char *nom, char *prenom) {
 void affiche_menu(void)
 {
     printf("Que souhaitez-vous faire ?\n");
+    printf("1. Ajouter un contact"\n);
+    printf("2. Afficher tout les contacts\n");
+    printf("3. Afficher l'aide\n");
+    printf("4. Rechercher un contact");
+    printf("5. Extraire certaine information");
+    printf("6. Supprimer un contact");
+    printf("7. Fusionner des fichiers");
+    printf("8. Quitter");
 }
 
 
