@@ -50,6 +50,12 @@ int main(int argc, char *argv[])
         if (argc != 4) {
             printf("Usage: ./annuaire -f fichier1 fichier2\n");
             return 1;
+        }
+        Annuaire annuaire2;
+        charger_annuaire(&annuaire, argv[2]);
+        charger_annuaire(&annuaire2, argv[3]);
+
+        fusionner_annuaire(&annuaire, annuaire2);
     }
     else if (strcmp(argv[1], "-r") == 0){
         if (argc != 5){
@@ -57,24 +63,23 @@ int main(int argc, char *argv[])
             return 1;
         }
 
-        charger_annuaire(&annuaire, argv[5]);
+        charger_annuaire(&annuaire, argv[4]);
 
-        rechercher_contacte_annuaire(annuaire, argv[4], argv[3]);
+        rechercher_contacte_annuaire(annuaire, argv[3], argv[2]);
+    }
+    else if (strcmp(argv[1], "-s") == 0){
+        if (argc != 4){
+            printf("Usage: ./annuaire -s nom fichier\n");
+            return 1;
+        }
+
+        charger_annuaire(&annuaire, argv[3]);
+        supprimer_contacte_annuaire(&annuaire, argv[2])
     }
     else if (strcmp(argv[1], "-i") == 0){
         affiche_menu();
         return 1;
     }
-
-    Annuaire a1, a2;
-
-    charger_annuaire(&a1, argv[2]);
-    charger_annuaire(&a2, argv[3]);
-
-    fusionner_annuaire(&a1, a2);
-
-    sauvegarder_annuaire(a1, argv[2]);
-    }  
     else {
         printf("Option inconnue. Utilise -h pour l'aide.\n");
     }
