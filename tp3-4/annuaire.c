@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
         }
 
         charger_annuaire(&annuaire, argv[3]);
-        supprimer_contacte_annuaire(&annuaire, argv[2])
+        supprimer_contacte_annuaire(&annuaire, argv[2]);
     }
     else if (strcmp(argv[1], "-i") == 0){
         affiche_menu();
