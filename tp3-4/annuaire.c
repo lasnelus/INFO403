@@ -178,7 +178,7 @@ void affiche_menu_suppression(Annuaire *annuaire)
 
 void affiche_menu_fusion(Annuaire *annuaire)
 {
-    char *nom_fichier;
+    char nom_fichier[99];
     Annuaire annuaire2;
     scanf("nom du fichier à ajouter à l'annuaire: %s", nom_fichier);
     charger_annuaire(&annuaire2, nom_fichier);
