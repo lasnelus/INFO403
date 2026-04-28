@@ -128,6 +128,7 @@ void affiche_menu(Annuaire *annuaire)
     printf("8. Quitter\n");
     scanf("%d", &choix);
 
+    affiche_menu_ajout(annuaire);
 }
 
 void affiche_menu_ajout(Annuaire *annuaire)
