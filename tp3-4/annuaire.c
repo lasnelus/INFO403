@@ -85,14 +85,12 @@ int main(int argc, char *argv[])
         printf("Option inconnue. Utilise -h pour l'aide.\n");
     }
 
-    sauvegarder_annuaire(annuaire, "sauvegarde.sav")
+    sauvegarder_annuaire(annuaire, "sauvegarde.sav");
     return 0;
 }
 
 void affiche_aide(void)
 {
-    int choix = 0;
-
     printf("Options disponibles :\n");
     printf("-a nom prenom tel mail fichier : ajouter un contact\n");
     printf("-l fichier : lister les contacts\n");
@@ -118,6 +116,7 @@ int hash(char *nom, char *prenom) {
 
 void affiche_menu(Annuaire *annuaire)
 {
+    int choix = 0;
     printf("Que souhaitez-vous faire ?\n");
     printf("1. Ajouter un contact\n");
     printf("2. Afficher tout les contacts\n");
@@ -127,6 +126,8 @@ void affiche_menu(Annuaire *annuaire)
     printf("6. Supprimer un contact\n");
     printf("7. Fusionner des fichiers\n");
     printf("8. Quitter\n");
+    scanf("%d", choix);
+
 }
 
 void affiche_menu_ajout(Annuaire *annuaire)
@@ -177,7 +178,7 @@ void affiche_menu_fusion(Annuaire *annuaire)
     Annuaire annuaire2;
     scanf("nom du fichier à ajouter à l'annuaire: %s", nom_fichier);
     charger_annuaire(&annuaire2, nom_fichier);
-    fusionner_annuaire(annuaire, *annuaire2);
+    fusionner_annuaire(annuaire, annuaire2);
 }
 
 // AFFICHAGE DE L'ANNUAIRE
