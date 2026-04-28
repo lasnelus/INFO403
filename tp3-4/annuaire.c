@@ -85,10 +85,10 @@ void affiche_aide(void)
 
 int hash(char *nom, char *prenom) {
     int hash = 0;
-    for (int i = 0; i < strlen(nom); i++) {
+    for (size_t i = 0; i < strlen(nom); i++) {
        hash += nom[i];
     }
-    for (int i = 0; i < strlen(prenom); i++) {
+    for (size_t i = 0; i < strlen(prenom); i++) {
         hash += prenom[i];
     }
     return hash % SIZE;
