@@ -136,7 +136,7 @@ void affiche_menu(Annuaire *annuaire)
                 break;
 
             case 2:
-                affiche_contacts(annuaire);
+                lister_contacte_annuaire(annuaire);
                 break;
 
             case 3:
