@@ -18,7 +18,6 @@ typedef struct liste_contacte {
     struct liste_contacte *suiv;
 } *Liste_Contacte;
 
-
 typedef Liste_Contacte Annuaire[SIZE];
 
 void affiche_menu(void);
@@ -41,7 +40,7 @@ void lister_contacte_annuaire(Annuaire annuaire);
 
 void supprimer_contacte_annuaire(Annuaire *annuaire, Contacte contacte);
 
-Contacte rechercher_contacte_nom_annuaire(Annuaire annuaire, char nom[NOM_MAX_LENGTH]);
+void rechercher_contacte_annuaire(Annuaire annuaire, char *val, char filtre);
 
 void extraire_contacte_annuaire(Annuaire annuaire, char *param);
 

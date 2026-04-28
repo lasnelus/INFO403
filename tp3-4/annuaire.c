@@ -50,6 +50,16 @@ int main(int argc, char *argv[])
             printf("Usage: ./annuaire -f fichier1 fichier2\n");
             return 1;
     }
+    else if (strcmp(argv[1], "-r") == 0){
+        if (argc != 5){
+            printf("Usage: ./annuaire -r [n|t|m] valeur fichier\n");
+            return 1;
+        }
+
+        charger_annuaire(&annuaire, argv[5]);
+
+        rechercher_contacte_annuaire(annuaire, argv[4], argv[3]);
+    }
     else if (strcmp(argv[1], "-i") == 0){
         affiche_menu();
         return 1;
@@ -191,6 +201,29 @@ void ajouter_contacte_annuaire(Annuaire *annuaire, Contacte contacte)
     ajouter_contacte_liste_contacte(&(*annuaire)[index], contacte);
 }
 
+// SYSTEME RECHERCHE ANNUAIRE
+
+void rechercher_contacte_annuaire(Annuaire annuaire, char *val, char filtre)
+{
+    for (int i = 0; i < SIZE; i++)
+    {
+        Liste_Contacte temp = annuaire[i];
+
+        while (temp != NULL)
+        {
+            if (critere == 'n' && strcmp(temp->contacte.nom, val) == 0)
+                afficher_contacte(temp->contacte);
+
+            if (critere == 't' && strcmp(temp->contacte.tel, val) == 0)
+                afficher_contacte(temp->contacte);
+
+            if (critere == 'm' && strcmp(temp->contacte.mail, val) == 0)
+                afficher_contacte(temp->contacte);
+
+            temp = temp->suiv;
+        }
+    }
+}
 //SYSTEME FUSION ANNUAIRE
 
 void fusionner_annuaire(Annuaire *annuaire_receveur, Annuaire annuaire_donneur)
