@@ -135,9 +135,32 @@ void afficher_contacte(Contacte contacte)
 
 void extraire_contacte_annuaire(Annuaire annuaire, char *param)
 {
+    for (int i = 0; i < SIZE; i++)
+    {
+        Liste_Contacte temp = annuaire[i];
 
+        while (temp != NULL)
+        {
+            for (int j = 0; param[j] != '\0'; j++)
+            {
+                if (param[j] == 'n')
+                    printf("%s ", temp->contacte.nom);
+
+                if (param[j] == 'p')
+                    printf("%s ", temp->contacte.prenom);
+
+                if (param[j] == 't')
+                    printf("%s ", temp->contacte.tel);
+
+                if (param[j] == 'm')
+                    printf("%s ", temp->contacte.mail);
+            }
+
+            printf("\n");
+            temp = temp->suiv;
+        }
+    }
 }
-
 
 // SYSTEME D'AJOUT A L'ANNUAIRE
 
