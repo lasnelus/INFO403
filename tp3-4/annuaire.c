@@ -203,7 +203,7 @@ void ajouter_contacte_annuaire(Annuaire *annuaire, Contacte contacte)
 
 // SYSTEME RECHERCHE ANNUAIRE
 
-void rechercher_contacte_annuaire(Annuaire annuaire, char *val, char filtre)
+void rechercher_contacte_annuaire(Annuaire annuaire, char *val, char *filtre)
 {
     for (int i = 0; i < SIZE; i++)
     {
@@ -211,13 +211,13 @@ void rechercher_contacte_annuaire(Annuaire annuaire, char *val, char filtre)
 
         while (temp != NULL)
         {
-            if (filtre == 'n' && strcmp(temp->contacte.nom, val) == 0)
+            if (filtre == "n" && strcmp(temp->contacte.nom, val) == 0)
                 afficher_contacte(temp->contacte);
 
-            if (filtre == 't' && strcmp(temp->contacte.tel, val) == 0)
+            if (filtre == "t" && strcmp(temp->contacte.tel, val) == 0)
                 afficher_contacte(temp->contacte);
 
-            if (filtre == 'm' && strcmp(temp->contacte.mail, val) == 0)
+            if (filtre == "m" && strcmp(temp->contacte.mail, val) == 0)
                 afficher_contacte(temp->contacte);
 
             temp = temp->suiv;
