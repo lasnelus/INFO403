@@ -41,7 +41,7 @@ void supprimer_contacte_annuaire(Annuaire *annuaire, Contacte contacte);
 
 Contacte rechercher_contacte_nom_annuaire(Annuaire annuaire, char nom[NOM_MAX_LENGTH]);
 
-//extraire wtf
+void extraire_contacte_annuaire(Annuaire annuaire, char *param);
 
 void fusionner_annuaire(Annuaire *annuaire_receveur, Annuaire annuaire_donneur);
 

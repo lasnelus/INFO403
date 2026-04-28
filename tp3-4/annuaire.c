@@ -40,9 +40,18 @@ int main(int argc, char *argv[])
 
         sauvegarder_annuaire(annuaire, argv[6]);
     }
+    else if (strcmp(argv[1], "-e") == 0){
+        charger_annuaire(&annuaire, argv[3]);
+
+        extraire_contacte_annuaire(annuaire, argv[2]);
+    }
     else if (strcmp(argv[1], "-f") == 0){
-    if (argc != 4) {
-        printf("Usage: ./annuaire -f fichier1 fichier2\n");
+        if (argc != 4) {
+            printf("Usage: ./annuaire -f fichier1 fichier2\n");
+            return 1;
+    }
+    else if (strcmp(argv[1], "-i") == 0){
+        affiche_menu();
         return 1;
     }
 
@@ -85,6 +94,14 @@ int hash(char *nom, char *prenom) {
     return hash % SIZE;
 }
 
+// MENU INTERACTIF
+
+void affiche_menu(void)
+{
+    printf("Que souhaitez-vous faire ?\n");
+}
+
+
 // AFFICHAGE DE L'ANNUAIRE
 
 void lister_contacte_annuaire(Annuaire annuaire)
@@ -94,9 +111,9 @@ void lister_contacte_annuaire(Annuaire annuaire)
         afficher_contacte_liste_contacte(annuaire[i]);
     }
 }
+{
 
 void afficher_contacte_liste_contacte(Liste_Contacte liste_contacte)
-{
     while (liste_contacte != NULL)
     {
         afficher_contacte(liste_contacte->contacte);
@@ -111,6 +128,13 @@ void afficher_contacte(Contacte contacte)
     printf("prenom: %s\n", contacte.prenom);
     printf("tel: %s\n", contacte.tel);
     printf("mail: %s\n", contacte.mail);
+}
+
+// SYSTEME D'EXTRACTION
+
+void extraire_contacte_annuaire(Annuaire annuaire, char *param)
+{
+
 }
 
 
