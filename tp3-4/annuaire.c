@@ -211,13 +211,13 @@ void rechercher_contacte_annuaire(Annuaire annuaire, char *val, char *filtre)
 
         while (temp != NULL)
         {
-            if (filtre == "n" && strcmp(temp->contacte.nom, val) == 0)
+            if (strcmp(filter, "n") == 0 && strcmp(temp->contacte.nom, val) == 0)
                 afficher_contacte(temp->contacte);
 
-            if (filtre == "t" && strcmp(temp->contacte.tel, val) == 0)
+            if (strcmp(filter, "t") == 0 && strcmp(temp->contacte.tel, val) == 0)
                 afficher_contacte(temp->contacte);
 
-            if (filtre == "m" && strcmp(temp->contacte.mail, val) == 0)
+            if (strcmp(filter, "m") == 0 && strcmp(temp->contacte.mail, val) == 0)
                 afficher_contacte(temp->contacte);
 
             temp = temp->suiv;
