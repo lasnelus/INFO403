@@ -77,18 +77,22 @@ int main(int argc, char *argv[])
         supprimer_contacte_annuaire(&annuaire, argv[2]);
     }
     else if (strcmp(argv[1], "-i") == 0){
-        affiche_menu();
+        charger_annuaire(&annuaire, argv[2]);
+        affiche_menu(&annuaire);
         return 1;
     }
     else {
         printf("Option inconnue. Utilise -h pour l'aide.\n");
     }
 
+    sauvegarder_annuaire(annuaire, "sauvegarde.sav")
     return 0;
 }
 
 void affiche_aide(void)
 {
+    int choix = 0;
+
     printf("Options disponibles :\n");
     printf("-a nom prenom tel mail fichier : ajouter un contact\n");
     printf("-l fichier : lister les contacts\n");
@@ -112,19 +116,69 @@ int hash(char *nom, char *prenom) {
 
 // MENU INTERACTIF
 
-void affiche_menu(void)
+void affiche_menu(Annuaire *annuaire)
 {
     printf("Que souhaitez-vous faire ?\n");
-    printf("1. Ajouter un contact"\n);
+    printf("1. Ajouter un contact\n");
     printf("2. Afficher tout les contacts\n");
     printf("3. Afficher l'aide\n");
-    printf("4. Rechercher un contact");
-    printf("5. Extraire certaine information");
-    printf("6. Supprimer un contact");
-    printf("7. Fusionner des fichiers");
-    printf("8. Quitter");
+    printf("4. Rechercher un contact\n");
+    printf("5. Extraire certaine information\n");
+    printf("6. Supprimer un contact\n");
+    printf("7. Fusionner des fichiers\n");
+    printf("8. Quitter\n");
 }
 
+void affiche_menu_ajout(Annuaire *annuaire)
+{
+    char *nom;
+    char *prenom;
+    char *tel;
+    char *mail;
+    scanf("nom : %s\n", nom);
+    scanf("prenom : %s\n", prenom);
+    scanf("n° telephone : %s\n", tel);
+    scanf("mail : %s\n", mail);
+    Contacte contacte = init_contacte(nom, prenom, tel, mail);
+    ajouter_contacte_annuaire(annuaire, contacte);
+}
+
+void affiche_menu_recherche(Annuaire annuaire)
+{
+    char *param;
+    char *valeur;
+    printf("Sur quel paramètre rechercher ?\n");
+    printf("n : nom\n t: n° telephone\n m: mail");
+    scanf("%s", param);
+    scanf("à chercher : %s", valeur);
+    rechercher_contacte_annuaire(annuaire, valeur, param);
+}
+
+void affiche_menu_extraction(Annuaire annuaire)
+{
+    char *param;
+    printf("Quel information rechercher ?\n");
+    printf("n: nom\n p: prenom\n t: n° telephone\n m: mail");
+    printf("écrire tout attaché les informations vouluts");
+    scanf("%s", param);
+    extraire_contacte_annuaire(annuaire, param);
+}
+
+void affiche_menu_suppression(Annuaire *annuaire)
+{
+    char *nom;
+    scanf("nom du contact à supprimer: %s", nom);
+    supprimer_contacte_annuaire(annuaire, nom);
+}
+
+void affiche_menu_fusion(Annuaire *annuaire)
+{
+    char *nom_fichier;
+    Annuaire annuaire2;
+    scanf("nom du fichier à ajouter à l'annuaire: %s", nom_fichier);
+    charger_annuaire(&annuaire2, nom_fichier);
+    fusionner_annuaire(annuaire, *annuaire2);
+}
 
 // AFFICHAGE DE L'ANNUAIRE
 

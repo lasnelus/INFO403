@@ -20,8 +20,6 @@ typedef struct liste_contacte {
 
 typedef Liste_Contacte Annuaire[SIZE];
 
-void affiche_menu(void);
-
 void affiche_aide(void);
 
 int hash(char *name, char *first_name);
@@ -53,3 +51,16 @@ void charger_annuaire(Annuaire *annuaire, char *chemin_charge);
 void init_annuaire(Annuaire *annuaire);
 
 Contacte init_contacte(char *nom, char* prenom, char *tel, char *mail);
+
+
+void affiche_menu(Annuaire *annuaire);
+
+void affiche_menu_ajout(Annuaire *annuaire);
+
+void affiche_menu_recherche(Annuaire annuaire);
+
+void affiche_menu_extraction(Annuaire annuaire);
+
+void affiche_menu_suppression(Annuaire *annuaire);
+
+void affiche_menu_fusion(Annuaire *annuaire);
