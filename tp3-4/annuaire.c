@@ -117,6 +117,8 @@ int hash(char *nom, char *prenom) {
 void affiche_menu(Annuaire *annuaire)
 {
     int choix = 0;
+
+    do{
     printf("Que souhaitez-vous faire ?\n");
     printf("1. Ajouter un contact\n");
     printf("2. Afficher tout les contacts\n");
@@ -127,8 +129,47 @@ void affiche_menu(Annuaire *annuaire)
     printf("7. Fusionner des fichiers\n");
     printf("8. Quitter\n");
     scanf("%d", &choix);
+    switch (choix)
+        {
+            case 1:
+                affiche_menu_ajout(annuaire);
+                break;
 
-    affiche_menu_ajout(annuaire);
+            case 2:
+                afficher_contacts(annuaire);
+                break;
+
+            case 3:
+                affiche_aide();
+                break;
+
+            case 4:
+                affiche_menu_recherche(*annuaire);
+                break;
+
+            case 5:
+                affiche_menu_extraction(*annuaire);
+                break;
+
+            case 6:
+                affiche_menu_suppression(annuaire);
+                break;
+
+            case 7:
+                affiche_menu_fusion(annuaire);
+                break;
+
+            case 8:
+                printf("Au revoir !\n");
+                break;
+
+            default:
+                printf("Choix invalide. Veuillez recommencer.\n");
+                break;
+        }
+
+    } while (choix != 8);
+
 }
 
 void affiche_menu_ajout(Annuaire *annuaire)
