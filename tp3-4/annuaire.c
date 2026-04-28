@@ -207,7 +207,7 @@ void affiche_menu_extraction(Annuaire annuaire)
     char param[7];
     printf("Quel information rechercher ?\n");
     printf("n: nom\n p: prenom\n t: n° telephone\n m: mail\n");
-    printf("écrire tout attaché les informations voulues\n");
+    printf("écrire tout attaché les informations voulues pizza\n");
     scanf("%s", param);
     extraire_contacte_annuaire(annuaire, param);
 }
