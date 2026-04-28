@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
     charger_annuaire(&a1, argv[2]);
     charger_annuaire(&a2, argv[3]);
 
-    fusionner_annuaires(&a1, a2);
+    fusionner_annuaire(&a1, a2);
 
     sauvegarder_annuaire(a1, argv[2]);
     }  
@@ -111,9 +111,10 @@ void lister_contacte_annuaire(Annuaire annuaire)
         afficher_contacte_liste_contacte(annuaire[i]);
     }
 }
-{
+
 
 void afficher_contacte_liste_contacte(Liste_Contacte liste_contacte)
+{
     while (liste_contacte != NULL)
     {
         afficher_contacte(liste_contacte->contacte);
@@ -177,7 +178,7 @@ void fusionner_annuaire(Annuaire *annuaire_receveur, Annuaire annuaire_donneur)
 
         while (temp != NULL)
         {
-            ajouter_contacte_annuaire(a1, temp->contacte);
+            ajouter_contacte_annuaire(annuaire_receveur, temp->contacte);
             temp = temp->suiv;
         }
     }

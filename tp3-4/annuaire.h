@@ -21,6 +21,8 @@ typedef struct liste_contacte {
 
 typedef Liste_Contacte Annuaire[SIZE];
 
+void affiche_menu(void);
+
 void affiche_aide(void);
 
 int hash(char *name, char *first_name);
