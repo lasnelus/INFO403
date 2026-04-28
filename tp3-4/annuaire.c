@@ -142,7 +142,7 @@ void affiche_menu_ajout(Annuaire *annuaire)
     scanf("%s\n", prenom);
     printf("N° telephone : ");
     scanf("%s\n", tel);
-    printf("Mail : ")
+    printf("Mail : ");
     scanf("%s\n", mail);
     Contacte contacte = init_contacte(nom, prenom, tel, mail);
     ajouter_contacte_annuaire(annuaire, contacte);
