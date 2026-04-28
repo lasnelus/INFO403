@@ -40,7 +40,7 @@ void lister_contacte_annuaire(Annuaire annuaire);
 
 void supprimer_contacte_annuaire(Annuaire *annuaire, Contacte contacte);
 
-void rechercher_contacte_annuaire(Annuaire annuaire, char *val, char filtre);
+void rechercher_contacte_annuaire(Annuaire annuaire, char *val, char *filtre);
 
 void extraire_contacte_annuaire(Annuaire annuaire, char *param);
 
