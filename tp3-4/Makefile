@@ -2,5 +2,5 @@ CFLAGS = -Wall -Wextra -std=c99
 
 all: annuaire
 
-annuaire: annuaire.c
+annuaire: annuaire.o
 	gcc $(CFLAGS) -o $@ $^
