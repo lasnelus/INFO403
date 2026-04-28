@@ -38,7 +38,7 @@ void afficher_contacte_liste_contacte(Liste_Contacte liste_contacte);
 
 void lister_contacte_annuaire(Annuaire annuaire);
 
-void supprimer_contacte_annuaire(Annuaire *annuaire, Contacte contacte);
+void supprimer_contacte_annuaire(Annuaire *annuaire, char *nom);
 
 void rechercher_contacte_annuaire(Annuaire annuaire, char *val, char *filtre);
 

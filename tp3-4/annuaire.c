@@ -224,18 +224,57 @@ void rechercher_contacte_annuaire(Annuaire annuaire, char *val, char *filtre)
         }
     }
 }
+
+//SYSTEME SUPPRESSION CONTACT
+
+void supprimer_contacte_annuaire(Annuaire *annuaire, char *nom)
+{
+    int trouve = false;
+
+    for (int i = 0; i < SIZE && !trouve; i++)
+    {
+        Liste_Contacte temp = annuaire[i];
+
+        while (temp != NULL && !trouve)
+        {
+            if (strcmp(temp->contacte.nom, nom) == 0)
+            {
+                afficher_contacte(temp->contacte);
+                trouve = 1;
+            temp = temp->suiv;
+        }
+    }
+
+    if (!trouve)
+        printf("Contact introuvable\n");
+}
+
 //SYSTEME FUSION ANNUAIRE
 
 void fusionner_annuaire(Annuaire *annuaire_receveur, Annuaire annuaire_donneur)
 {
-    for (int i = 0; i < SIZE; i++)
-    {
-        Liste_Contacte temp = annuaire_donneur[i];
+    int trouve = false;
 
-        while (temp != NULL)
+    for (int i = 0; i < SIZE && !trouve; i++)
+    {
+        Liste_Contacte temp = (*annuaire)[i];
+        Liste_Contacte prec = NULL;
+
+        while (temp != NULL && !trouve)
         {
-            ajouter_contacte_annuaire(annuaire_receveur, temp->contacte);
-            temp = temp->suiv;
+            if (strcmp(temp->contacte.nom, nom) == 0)
+            {
+                if (prec == NULL)
+                    (*annuaire)[i] = temp->suiv;
+                else
+                    prec->suiv = temp->suiv;
+                trouve = true;
+            }
+            else
+            {
+                prec = temp;
+                temp = temp->suiv;
+            }
         }
     }
 }
