@@ -234,28 +234,6 @@ void supprimer_contacte_annuaire(Annuaire *annuaire, char *nom)
 
     for (int i = 0; i < SIZE && !trouve; i++)
     {
-        Liste_Contacte temp = annuaire[i];
-
-        while (temp != NULL && !trouve)
-        {
-            if (strcmp(temp->contacte.nom, nom) == 0)
-            {
-                afficher_contacte(temp->contacte);
-                trouve = 1;
-            temp = temp->suiv;
-        }
-    }
-}
-}
-
-//SYSTEME FUSION ANNUAIRE
-
-void fusionner_annuaire(Annuaire *annuaire_receveur, Annuaire annuaire_donneur)
-{
-    int trouve = false;
-
-    for (int i = 0; i < SIZE && !trouve; i++)
-    {
         Liste_Contacte temp = (*annuaire)[i];
         Liste_Contacte prec = NULL;
 
@@ -267,6 +245,8 @@ void fusionner_annuaire(Annuaire *annuaire_receveur, Annuaire annuaire_donneur)
                     (*annuaire)[i] = temp->suiv;
                 else
                     prec->suiv = temp->suiv;
+
+                free(temp);
                 trouve = true;
             }
             else
@@ -274,6 +254,22 @@ void fusionner_annuaire(Annuaire *annuaire_receveur, Annuaire annuaire_donneur)
                 prec = temp;
                 temp = temp->suiv;
             }
+        }
+    }
+}
+
+//SYSTEME FUSION ANNUAIRE
+
+void fusionner_annuaire(Annuaire *annuaire_receveur, Annuaire annuaire_donneur)
+{
+    for (int i = 0; i < SIZE; i++)
+    {
+        Liste_Contacte temp = annuaire_donneur[i];
+
+        while (temp != NULL)
+        {
+            ajouter_contacte_annuaire(annuaire_receveur, temp->contacte);
+            temp = temp->suiv;
         }
     }
 }
