@@ -126,20 +126,24 @@ void affiche_menu(Annuaire *annuaire)
     printf("6. Supprimer un contact\n");
     printf("7. Fusionner des fichiers\n");
     printf("8. Quitter\n");
-    scanf("%d", choix);
+    scanf("%d", &choix);
 
 }
 
 void affiche_menu_ajout(Annuaire *annuaire)
 {
-    char *nom;
-    char *prenom;
-    char *tel;
-    char *mail;
-    scanf("nom : %s\n", nom);
-    scanf("prenom : %s\n", prenom);
-    scanf("n° telephone : %s\n", tel);
-    scanf("mail : %s\n", mail);
+    char nom[NOM_MAX_LENGTH];
+    char prenom[PRENOM_MAX_LENGTH];
+    char tel[TEL_LENGTH];
+    char mail[MAIL_MAX_LENGTH];
+    printf("Nom : ");
+    scanf("%s\n", nom);
+    printf("Prenom : ");
+    scanf("%s\n", prenom);
+    printf("N° telephone : ");
+    scanf("%s\n", tel);
+    printf("Mail : ")
+    scanf("%s\n", mail);
     Contacte contacte = init_contacte(nom, prenom, tel, mail);
     ajouter_contacte_annuaire(annuaire, contacte);
 }
