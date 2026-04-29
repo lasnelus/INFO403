@@ -1,4 +1,5 @@
 #include "annuaire.h"
+#include <stdio.h>
 
 // MENU INTERACTIF
 
