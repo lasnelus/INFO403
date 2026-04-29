@@ -18,8 +18,6 @@ int hash(char *name, char *first_name);
 
 void init_annuaire(Annuaire *annuaire);
 
-// Liste_Contacte init_liste_contacte(Contacte contacte);
-
 void ajouter_contacte_liste_contacte(Liste_Contacte *liste_contacte, Contacte contacte);
 
 void ajouter_contacte_annuaire(Annuaire *annuaire, Contacte contacte);
@@ -48,17 +46,3 @@ void charger_annuaire(Annuaire *annuaire, char *chemin_charge);
 void affiche_aide(void);
 
 #endif
-// Contacte init_contacte(char *nom, char* prenom, char *tel, char *mail);
-
-
-// void affiche_menu(Annuaire *annuaire);
-
-// void affiche_menu_ajout(Annuaire *annuaire);
-
-// void affiche_menu_recherche(Annuaire annuaire);
-
-// void affiche_menu_extraction(Annuaire annuaire);
-
-// void affiche_menu_suppression(Annuaire *annuaire);
-
-// void affiche_menu_fusion(Annuaire *annuaire);
