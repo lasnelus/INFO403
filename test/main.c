@@ -7,5 +7,7 @@ void main()
     int c=*(&a);
     int *d=&b;
 
-    printf("%d %d %d %d", a,b,c,d);
+    printf("%d %d %d %d", a,b,c,*d);
+    a++;
+    printf("%d %d %d %d", a,b,c,*d);
 }
