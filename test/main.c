@@ -3,7 +3,7 @@
 void main()
 {
     int a=4;
-    int b=4;
+    int b=a;
     int c=*(&a);
     int *d=&b;
 
