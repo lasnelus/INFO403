@@ -11,6 +11,6 @@ void main()
     a++;
     printf("%d %d %d %d\n", a,b,c,*d);
 
-    (*b)++
+    (*b)++;
     printf("%d %d %d %d\n", a,b,c,*d);
 }
